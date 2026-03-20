@@ -29,7 +29,7 @@ export const HomePage = ({ setPage }) => {
   return (
     <div>
       {/* Hero */}
-      <div className="hero-bg" style={{ paddingTop: 68 }}>
+      <div className="hero-bg" style={{ paddingTop: 132, paddingBottom: 64 }}>
         <div className="hero-shape hero-shape-tr" />
         <div className="hero-shape hero-shape-br" />
         <div className="hero-shape hero-shape-left-orange" />
