@@ -1,0 +1,100 @@
+import React, { useState, useEffect, useRef } from "react";
+import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+
+export const ProjectDetailPage = ({ setPage }) => (
+<div>
+  <div style={{ background: `url('https://images.unsplash.com/photo-1460574283810-2aab119d8511?w=1600&q=80') center/cover`, height: 400, paddingTop: 68 }} />
+  <section style={{ background: BLACK, padding: "60px 0" }}>
+    <div className="container">
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 48, alignItems: "start" }} className="grid-2">
+        <div>
+          <span style={{ color: ORANGE, cursor: "pointer", fontSize: 13, fontWeight: 600 }} onClick={() => setPage("projects")}>← Back to Projects</span>
+          <div style={{ marginTop: 16, marginBottom: 8 }}>
+            <div className="orange-bar" />
+          </div>
+          <h2 className="heading-font" style={{ fontSize: 36, fontWeight: 900, textTransform: "uppercase", marginBottom: 16 }}>PROJECT OVERVIEW</h2>
+          <p style={{ fontSize: 14, color: "#aaa", lineHeight: 1.7, marginBottom: 16 }}>
+            The reconstruction of Section II of the Lagos-Ibadan Expressway represents one of the most critical infrastructure upgrades in recent Nigerian history. This 45km stretch serves as the primary artery connecting the commercial hub of Lagos to the rest of the country, handling an estimated 250,000 vehicles daily.
+          </p>
+          <p style={{ fontSize: 14, color: "#aaa", lineHeight: 1.7, marginBottom: 32 }}>
+            Gambalt was contracted to deliver a comprehensive overhaul of the existing carriageway, including significant expansion works, structural reinforcements of aging bridges, and the implementation of modern drainage solutions to combat seasonal flooding issues that previously plagued the route.
+          </p>
+          <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 28, marginBottom: 32 }}>
+            <h4 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", marginBottom: 20 }}>SCOPE OF WORK & CHALLENGES</h4>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+              <div>
+                <p style={{ color: ORANGE, fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>🔧 KEY DELIVERABLES</p>
+                {["45km dual carriageway reconstruction", "3 new interchange bridges", "15km of reinforced concrete drainage", "Installation of smart traffic monitoring systems"].map(d => (
+                  <div key={d} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                    <span style={{ color: "#4ade80", fontSize: 12 }}>✓</span>
+                    <span style={{ fontSize: 12, color: "#ccc" }}>{d}</span>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p style={{ color: "#60a5fa", fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 }}>⚠ MAJOR CONSTRAINTS</p>
+                {["Maintaining traffic flow during construction", "Severe rainy season interruptions", "Navigating heavily populated informal settlements"].map(d => (
+                  <div key={d} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                    <span style={{ color: "#60a5fa", fontSize: 12 }}>●</span>
+                    <span style={{ fontSize: 12, color: "#ccc" }}>{d}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <h4 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", marginBottom: 16 }}>CONSTRUCTION GALLERY</h4>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 40 }}>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="construction" style={{ width: "100%", height: 160, objectFit: "cover" }} />
+            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80" alt="construction" style={{ width: "100%", height: 160, objectFit: "cover" }} />
+          </div>
+          <div className="orange-bar" />
+          <h4 className="heading-font" style={{ fontSize: 22, fontWeight: 700, textTransform: "uppercase", marginBottom: 24 }}>OUTCOMES & IMPACT</h4>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 24 }}>
+            {[["40%", "Reduction in Travel Time"], ["0", "Major Safety Incidents"], ["3 MONTHS", "Delivered Ahead of Schedule"]].map(([n, l]) => (
+              <div key={n} style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 20, textAlign: "center" }}>
+                <div className="heading-font" style={{ fontSize: 28, fontWeight: 900, color: ORANGE }}>{n}</div>
+                <div style={{ fontSize: 11, color: "#777", textTransform: "uppercase", letterSpacing: 1, marginTop: 4 }}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 24, marginBottom: 20 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <span style={{ color: ORANGE, fontSize: 20 }}>🦺</span>
+              <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase" }}>SAFETY & COMPLIANCE</h4>
+            </div>
+            <p style={{ fontSize: 12, color: "#888", marginBottom: 16 }}>This project adhered strictly to ISO 45001 standards for occupational health and safety.</p>
+            {["FMWH Standard Specifications", "Environmental Impact Assessment Passed", "1.2M Safe Man-Hours Achieved"].map(i => (
+              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                <span style={{ color: "#4ade80" }}>✓</span>
+                <span style={{ fontSize: 12, color: "#ccc" }}>{i}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 24, marginBottom: 20 }}>
+            <div style={{ color: ORANGE, fontSize: 32 }}>"</div>
+            <p style={{ fontSize: 13, color: "#ccc", fontStyle: "italic", lineHeight: 1.7, marginBottom: 16 }}>Gambalt's execution of Section II demonstrated exceptional engineering pedigree. Their ability to manage complex traffic diversions while maintaining high-quality construction standards was crucial to the project's success.</p>
+            <div style={{ fontSize: 12, color: ORANGE, fontWeight: 700 }}>ENGR. O. ADEYEMI</div>
+            <div style={{ fontSize: 11, color: "#666" }}>Director of Highways, FMWH</div>
+          </div>
+          <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 24 }}>
+            <div style={{ fontSize: 20, marginBottom: 12 }}>🦺</div>
+            <h4 className="heading-font" style={{ fontSize: 14, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>NEED SIMILAR INFRASTRUCTURE?</h4>
+            <p style={{ fontSize: 12, color: "#888", marginBottom: 16 }}>Our team is equipped to handle large-scale road and civil works.</p>
+            <button className="btn-orange" style={{ width: "100%" }} onClick={() => setPage("quote")}>REQUEST A QUOTE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div className="cta-section">
+    <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
+      <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", marginBottom: 12 }}>READY TO START YOUR PROJECT?</h2>
+      <p style={{ marginBottom: 28, opacity: 0.9 }}>Contact our engineering team to discuss your specific infrastructure or construction needs.</p>
+      <button className="btn-black" onClick={() => setPage("contact")}>CONTACT OUR TEAM</button>
+    </div>
+  </div>
+</div>
+);
+
