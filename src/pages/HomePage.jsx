@@ -30,7 +30,16 @@ export const HomePage = ({ setPage }) => {
     <div>
       {/* Hero */}
       <div className="hero-bg" style={{ paddingTop: 68 }}>
-        <div className="container">
+        <div className="hero-shape hero-shape-tr" />
+        <div className="hero-shape hero-shape-br" />
+        <div className="hero-shape hero-shape-left-orange" />
+        <div className="hero-shape hero-shape-left-dark" />
+        <div className="hero-ruler" />
+        <div className="hero-circle"><div style={{width:4, height:4, borderRadius:'50%', background:ORANGE, margin:'auto', marginTop:3}}/></div>
+        <div className="hero-scroll-btn" onClick={() => window.scrollTo({top: 800, behavior: 'smooth'})}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ maxWidth: 700 }}>
             <div className="orange-tag fade-up" style={{ marginBottom: 20 }}>BUILDING NIGERIA'S INFRASTRUCTURE</div>
             <h1 className="heading-font fade-up-delay hero-title" style={{ fontSize: 80, fontWeight: 900, lineHeight: 0.95, textTransform: "uppercase", marginBottom: 24 }}>
