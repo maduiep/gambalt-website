@@ -11,7 +11,6 @@ export const Logo = ({ onClick }) => (
         <rect x="14" y="14" width="7" height="7" rx="1"/>
       </svg>
     </div>
-    <span className="heading-font" style={{ fontSize: 22, fontWeight: 800, letterSpacing: 2, color: "#fff" }}>GAMBALT</span>
+    <span className="heading-font" style={{ fontSize: 22, fontWeight: 800, letterSpacing: 2, color: "var(--logo-color, #fff)" }}>GAMBALT</span>
   </div>
 );
-
