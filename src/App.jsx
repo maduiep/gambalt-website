@@ -6,7 +6,13 @@ import { HomePage, AboutPage, ServicesPage, ServiceDetailPage, ProjectsPage, Pro
 
 export default function GambaltWebsite() {
   const [page, setPage] = useState("home");
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
   const topRef = useRef(null);
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const navigate = (p) => {
     setPage(p);
@@ -17,7 +23,7 @@ export default function GambaltWebsite() {
     <>
       
       <div ref={topRef}>
-        <Navbar page={page} setPage={navigate} />
+        <Navbar page={page} setPage={navigate} theme={theme} setTheme={setTheme} />
         <main>
           {page === "home" && <HomePage setPage={navigate} />}
           {page === "about" && <AboutPage setPage={navigate} />}
