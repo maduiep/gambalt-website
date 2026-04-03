@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 
 export const ServicesPage = ({ setPage }) => {
@@ -17,11 +17,11 @@ export const ServicesPage = ({ setPage }) => {
         subtitle="Comprehensive civil engineering and construction solutions designed for maximum durability, efficiency, and compliance. We deliver outcomes, not just outputs." />
 
       {/* Industries bar */}
-      <div className="industries-bar">
+      <div className="industries-bar fade-in" style={{ background: CARD, borderBottom: `1px solid ${BORDER}` }}>
         <div className="container" style={{ display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap" }}>
-          <span style={{ fontFamily: "'Barlow Condensed'", fontWeight: 700, fontSize: 13, letterSpacing: 2, textTransform: "uppercase", color: "rgba(0,0,0,0.7)" }}>INDUSTRIES SERVED:</span>
-          {["🏛 GOVERNMENT", "🏭 INDUSTRIAL", "🏢 COMMERCIAL", "🏗 INFRASTRUCTURE"].map(i => (
-            <span key={i} style={{ fontFamily: "'Barlow Condensed'", fontWeight: 700, fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase", color: "#000" }}>{i}</span>
+          <span className="slide-in-left" style={{ fontFamily: "'Barlow Condensed'", fontWeight: 700, fontSize: 13, letterSpacing: 2, textTransform: "uppercase", color: MUTED }}>INDUSTRIES SERVED:</span>
+          {["🏛 GOVERNMENT", "🏭 INDUSTRIAL", "🏢 COMMERCIAL", "🏗 INFRASTRUCTURE"].map((i, idx) => (
+            <span key={i} className={`fade-in delay-${idx+1}`} style={{ fontFamily: "'Barlow Condensed'", fontWeight: 700, fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase", color: TEXT }}>{i}</span>
           ))}
         </div>
       </div>
@@ -30,27 +30,27 @@ export const ServicesPage = ({ setPage }) => {
       <section className="section" style={{ background: BLACK }}>
         <div className="container">
           {services.map((s, i) => (
-            <div key={i} className={`accordion-item ${expanded === i ? "open" : ""}`}>
+            <div key={i} className={`accordion-item ${expanded === i ? "open" : ""} fade-up delay-${(i % 4) + 1}`} style={{ borderBottom: `1px solid ${BORDER}` }}>
               <div style={{ padding: "24px 32px", display: "flex", alignItems: "center", gap: 20, cursor: "pointer", background: expanded === i ? CARD : "transparent" }}
                 onClick={() => setExpanded(expanded === i ? -1 : i)}>
-                <div style={{ fontSize: 28, width: 48, textAlign: "center" }}>{s.icon}</div>
+                <div style={{ fontSize: 28, width: 48, textAlign: "center" }} className="scale-in">{s.icon}</div>
                 <div style={{ flex: 1 }}>
-                  <h3 className="heading-font" style={{ fontSize: 22, fontWeight: 700, textTransform: "uppercase" }}>{s.title}</h3>
-                  <p style={{ fontSize: 13, color: "#888", marginTop: 4 }}>{s.desc}</p>
+                  <h3 className="heading-font" style={{ fontSize: 22, fontWeight: 700, textTransform: "uppercase", color: TEXT }}>{s.title}</h3>
+                  <p style={{ fontSize: 13, color: SUBTLE, marginTop: 4 }}>{s.desc}</p>
                 </div>
                 <span style={{ color: ORANGE, fontSize: 20, fontWeight: 700, flexShrink: 0 }}>{expanded === i ? "−" : "+"}</span>
               </div>
               {expanded === i && (
-                <div style={{ padding: "0 32px 28px 100px", background: CARD }}>
+                <div style={{ padding: "0 32px 28px 100px", background: CARD }} className="fade-in">
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 10 }}>
                     {s.details.map(d => (
                       <div key={d} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                         <span style={{ color: ORANGE }}>✓</span>
-                        <span style={{ fontSize: 13, color: "#ccc" }}>{d}</span>
+                        <span style={{ fontSize: 13, color: MUTED }}>{d}</span>
                       </div>
                     ))}
                   </div>
-                  <button className="btn-orange" style={{ marginTop: 20 }} onClick={() => setPage("service-detail")}>VIEW FULL SERVICE →</button>
+                  <button className="btn-orange fade-up" style={{ marginTop: 20 }} onClick={() => setPage("service-detail")}>VIEW FULL SERVICE →</button>
                 </div>
               )}
             </div>
@@ -63,23 +63,23 @@ export const ServicesPage = ({ setPage }) => {
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{ fontSize: 32, marginBottom: 16 }}>🦺</div>
-            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase" }}>START YOUR NEXT PROJECT WITH GAMBALT</h2>
-            <p style={{ color: "#888", marginTop: 12 }}>Whether you need comprehensive infrastructure build or specialized civil engineering services, our team is ready.</p>
+            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>START YOUR NEXT PROJECT WITH GAMBALT</h2>
+            <p style={{ color: SUBTLE, marginTop: 12 }}>Whether you need comprehensive infrastructure build or specialized civil engineering services, our team is ready.</p>
           </div>
           <div style={{ maxWidth: 640, margin: "0 auto" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <div className="form-group">
-                <label className="form-label">Full Name</label>
-                <input className="form-input" placeholder="John Doe" />
+                <label className="form-label" style={{ color: MUTED }}>Full Name</label>
+                <input className="form-input" placeholder="John Doe" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
               </div>
               <div className="form-group">
-                <label className="form-label">Company / Organization</label>
-                <input className="form-input" placeholder="Acme Corp" />
+                <label className="form-label" style={{ color: MUTED }}>Company / Organization</label>
+                <input className="form-input" placeholder="Acme Corp" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
               </div>
             </div>
             <div className="form-group">
-              <label className="form-label">Service Required</label>
-              <select className="form-select">
+              <label className="form-label" style={{ color: MUTED }}>Service Required</label>
+              <select className="form-select" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }}>
                 <option>Road Construction & Paving</option>
                 <option>Commercial Structures</option>
                 <option>Bridge Engineering</option>
@@ -88,8 +88,8 @@ export const ServicesPage = ({ setPage }) => {
               </select>
             </div>
             <div className="form-group">
-              <label className="form-label">Project Brief</label>
-              <textarea className="form-textarea" placeholder="Briefly describe your project needs..." />
+              <label className="form-label" style={{ color: MUTED }}>Project Brief</label>
+              <textarea className="form-textarea" placeholder="Briefly describe your project needs..." style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
             </div>
             <button className="btn-orange" style={{ width: "100%", textAlign: "center", padding: 16 }} onClick={() => setPage("quote")}>SUBMIT REQUEST</button>
           </div>
@@ -98,4 +98,3 @@ export const ServicesPage = ({ setPage }) => {
     </div>
   );
 };
-

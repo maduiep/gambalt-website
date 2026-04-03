@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 
 export const ProjectsPage = ({ setPage }) => {
@@ -25,16 +25,16 @@ export const ProjectsPage = ({ setPage }) => {
 
       <section className="section" style={{ background: BLACK }}>
         <div className="container">
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40 }}>
-            {filters.map(f => (
-              <button key={f} className={`filter-btn ${filter === f ? "active" : ""}`} onClick={() => setFilter(f)}>{f}</button>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40 }} className="fade-in">
+            {filters.map((f, i) => (
+              <button key={f} className={`filter-btn ${filter === f ? "active" : ""} slide-in-left delay-${(i % 5) + 1}`} onClick={() => setFilter(f)}>{f}</button>
             ))}
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
             {visible.map((p, i) => (
-              <div key={i} className="project-card" onClick={() => setPage(p.id)}>
+              <div key={i} className={`project-card fade-up delay-${(i % 3) + 1}`} onClick={() => setPage(p.id)} style={{ background: CARD, border: `1px solid ${BORDER}` }}>
                 <div className="project-overlay" />
-                <div style={{ position: "relative" }}>
+                <div style={{ position: "relative" }} className="scale-in">
                   <img src={p.img} alt={p.title} style={{ width: "100%", height: 200, objectFit: "cover" }} />
                   <div style={{ position: "absolute", top: 12, left: 12, display: "flex", gap: 6 }}>
                     <span className="tag-orange">{p.cat}</span>
@@ -43,9 +43,9 @@ export const ProjectsPage = ({ setPage }) => {
                     <span className="tag-green">{p.status}</span>
                   </div>
                 </div>
-                <div style={{ padding: "20px 24px", background: CARD }}>
-                  <h3 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>{p.title}</h3>
-                  <p style={{ fontSize: 12, color: "#777", lineHeight: 1.5, marginBottom: 12 }}>{p.desc}</p>
+                <div style={{ padding: "20px 24px" }}>
+                  <h3 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", marginBottom: 8, color: TEXT }}>{p.title}</h3>
+                  <p style={{ fontSize: 12, color: SUBTLE, lineHeight: 1.5, marginBottom: 12 }}>{p.desc}</p>
                   <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>VIEW DETAILS →</span>
                 </div>
               </div>
@@ -76,8 +76,8 @@ export const ProjectsPage = ({ setPage }) => {
       <section style={{ background: DARK, padding: "80px 0", textAlign: "center" }}>
         <div className="container">
           <div style={{ fontSize: 40, marginBottom: 16 }}>🦺</div>
-          <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", marginBottom: 12 }}>HAVE A SIMILAR PROJECT IN MIND?</h2>
-          <p style={{ color: "#888", marginBottom: 36, maxWidth: 500, margin: "12px auto 36px" }}>Contact our engineering team to discuss your specific infrastructure or construction needs.</p>
+          <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", marginBottom: 12, color: TEXT }}>HAVE A SIMILAR PROJECT IN MIND?</h2>
+          <p style={{ color: SUBTLE, marginBottom: 36, maxWidth: 500, margin: "12px auto 36px" }}>Contact our engineering team to discuss your specific infrastructure or construction needs.</p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
             <button className="btn-orange" onClick={() => setPage("contact")}>CONTACT OUR TEAM</button>
             <button className="btn-outline" onClick={() => setPage("about")}>VIEW COMPANY PROFILE</button>
@@ -87,4 +87,3 @@ export const ProjectsPage = ({ setPage }) => {
     </div>
   );
 };
-

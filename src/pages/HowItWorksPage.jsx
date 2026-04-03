@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 
 export const HowItWorksPage = ({ setPage }) => {
@@ -19,19 +19,19 @@ export const HowItWorksPage = ({ setPage }) => {
       <section className="section" style={{ background: BLACK }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase" }}>THE GAMBALT <span style={{ color: ORANGE }}>METHODOLOGY</span></h2>
-            <p style={{ color: "#777", marginTop: 12 }}>A transparent, 4-step framework designed to mitigate risk and ensure project success.</p>
+            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>THE GAMBALT <span style={{ color: ORANGE }}>METHODOLOGY</span></h2>
+            <p style={{ color: SUBTLE, marginTop: 12 }}>A transparent, 4-step framework designed to mitigate risk and ensure project success.</p>
           </div>
           <div style={{ maxWidth: 800, margin: "0 auto" }}>
             {steps.map((s, i) => (
-              <div key={i} className={`process-step ${open === i ? "active" : ""}`} onClick={() => setOpen(open === i ? -1 : i)}>
+              <div key={i} className={`process-step ${open === i ? "active" : ""}`} onClick={() => setOpen(open === i ? -1 : i)} style={{ background: open === i ? CARD : "transparent", border: `1px solid ${open === i ? BORDER : "transparent"}` }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "space-between" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                     <div style={{ width: 44, height: 44, background: open === i ? ORANGE : "rgba(232,84,26,0.15)", border: `2px solid ${ORANGE}`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span className="heading-font" style={{ fontSize: 16, fontWeight: 800 }}>{s.n}</span>
+                      <span className="heading-font" style={{ fontSize: 16, fontWeight: 800, color: open === i ? "#fff" : ORANGE }}>{s.n}</span>
                     </div>
                     <div>
-                      <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase" }}>{s.title}</h3>
+                      <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", color: TEXT }}>{s.title}</h3>
                       <span style={{ color: ORANGE, fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase" }}>{s.sub}</span>
                     </div>
                   </div>
@@ -40,11 +40,11 @@ export const HowItWorksPage = ({ setPage }) => {
                 {open === i && (
                   <div style={{ marginTop: 24, display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "start" }}>
                     <div>
-                      <p style={{ fontSize: 13, color: "#aaa", lineHeight: 1.7, marginBottom: 16 }}>{s.desc}</p>
+                      <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.7, marginBottom: 16 }}>{s.desc}</p>
                       {s.items.map(it => (
                         <div key={it} style={{ display: "flex", gap: 8, marginBottom: 8 }}>
                           <span style={{ color: ORANGE }}>✓</span>
-                          <span style={{ fontSize: 13, color: "#ccc" }}>{it}</span>
+                          <span style={{ fontSize: 13, color: MUTED }}>{it}</span>
                         </div>
                       ))}
                       <button className="btn-orange" style={{ marginTop: 16 }} onClick={(e) => { e.stopPropagation(); setPage("contact"); }}>REQUEST A CONSULTATION</button>
@@ -62,15 +62,15 @@ export const HowItWorksPage = ({ setPage }) => {
       <section style={{ background: DARK, padding: "80px 0" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase" }}>BUILT ON <span style={{ color: ORANGE }}>PRECISION</span></h2>
-            <p style={{ color: "#777", marginTop: 12 }}>Why clients trust our structured delivery methodology.</p>
+            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>BUILT ON <span style={{ color: ORANGE }}>PRECISION</span></h2>
+            <p style={{ color: SUBTLE, marginTop: 12 }}>Why clients trust our structured delivery methodology.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} className="grid-3">
             {[{ icon: "⏱", title: "Time Efficiency", desc: "Early risk identification prevents costly delays during the construction phase." }, { icon: "⚖️", title: "Budget Control", desc: "Accurate BOQs and rigorous senior management keep expenditures within approved limits." }, { icon: "🛡", title: "Risk Mitigation", desc: "Strict adherence to ISO safety standards and environmental regulations at every step." }].map(c => (
               <div key={c.title} style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 32, textAlign: "center" }}>
                 <div style={{ width: 60, height: 60, background: "rgba(232,84,26,0.15)", border: `1px solid rgba(232,84,26,0.3)`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", fontSize: 24 }}>{c.icon}</div>
-                <h4 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", marginBottom: 12 }}>{c.title}</h4>
-                <p style={{ fontSize: 13, color: "#888", lineHeight: 1.6 }}>{c.desc}</p>
+                <h4 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", color: TEXT }}>{c.title}</h4>
+                <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6 }}>{c.desc}</p>
               </div>
             ))}
           </div>
@@ -86,4 +86,3 @@ export const HowItWorksPage = ({ setPage }) => {
     </div>
   );
 };
-

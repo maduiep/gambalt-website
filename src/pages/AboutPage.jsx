@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 
 export const AboutPage = ({ setPage }) => {
@@ -25,27 +25,27 @@ export const AboutPage = ({ setPage }) => {
       <section style={{ background: DARK, padding: "80px 0" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="grid-2">
-            <div>
-              <div className="section-tag">COMPANY OVERVIEW</div>
-              <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 24 }}>
+            <div className="fade-in">
+              <div className="section-tag slide-in-left">COMPANY OVERVIEW</div>
+              <h2 className="heading-font slide-in-left delay-1" style={{ fontSize: 44, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 24 }}>
                 DELIVERING INDUSTRIAL STRENGTH <span style={{ color: ORANGE }}>SINCE DAY ONE</span>
               </h2>
-              <p style={{ fontSize: 14, color: "#aaa", lineHeight: 1.7, marginBottom: 16 }}>
+              <p className="fade-in delay-2" style={{ fontSize: 14, color: SUBTLE, lineHeight: 1.7, marginBottom: 16 }}>
                 Gambalt is a premier civil engineering and infrastructure consultancy delivering industrial-strength solutions across Nigeria. We are not just contractors; we are builders deeply committed to the structural integrity and long-term viability of every project we touch.
               </p>
-              <p style={{ fontSize: 14, color: "#aaa", lineHeight: 1.7, marginBottom: 28 }}>
+              <p className="fade-in delay-3" style={{ fontSize: 14, color: SUBTLE, lineHeight: 1.7, marginBottom: 28 }}>
                 Our mission is to spearhead and modernize infrastructure that drives economic growth and improves communities, while maintaining the highest standards of safety and technical excellence.
               </p>
-              <div style={{ display: "flex", gap: 32 }}>
+              <div style={{ display: "flex", gap: 32 }} className="fade-up delay-4">
                 {[["15+", "Years Experience"], ["250+", "Projects Done"], ["100%", "Safety Record"]].map(([n, l]) => (
                   <div key={n}>
                     <div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>{n}</div>
-                    <div style={{ fontSize: 11, color: "#666", textTransform: "uppercase", letterSpacing: 1 }}>{l}</div>
+                    <div style={{ fontSize: 11, color: MUTED, textTransform: "uppercase", letterSpacing: 1 }}>{l}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <img src="https://images.unsplash.com/photo-1581094488379-6a10d4e6f5f3?w=700&q=80" alt="team" style={{ width: "100%", height: 400, objectFit: "cover" }} />
+            <img src="https://images.unsplash.com/photo-1581094488379-6a10d4e6f5f3?w=700&q=80" alt="team" className="blur-in delay-2" style={{ width: "100%", height: 400, objectFit: "cover" }} />
           </div>
         </div>
       </section>
@@ -56,14 +56,14 @@ export const AboutPage = ({ setPage }) => {
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div className="section-tag">OUR FOUNDATION</div>
             <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase" }}>CORE <span style={{ color: ORANGE }}>VALUES</span></h2>
-            <p style={{ color: "#777", marginTop: 12 }}>Five principles that drive our operations and define our culture on every job site.</p>
+            <p style={{ color: SUBTLE, marginTop: 12 }}>Five principles that drive our operations and define our culture on every job site.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
-            {values.map(v => (
-              <div key={v.title} className="value-card">
+            {values.map((v, i) => (
+              <div key={v.title} className={`value-card fade-up delay-${(i % 3) + 1}`}>
                 <div style={{ fontSize: 32, marginBottom: 16 }}>{v.icon}</div>
                 <h3 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", marginBottom: 10 }}>{v.title}</h3>
-                <p style={{ fontSize: 13, color: "#888", lineHeight: 1.6 }}>{v.desc}</p>
+                <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6 }}>{v.desc}</p>
               </div>
             ))}
           </div>
@@ -87,13 +87,13 @@ export const AboutPage = ({ setPage }) => {
           <div className="section-tag">THE EXPERTS</div>
           <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", marginBottom: 48 }}>LEADERSHIP <span style={{ color: ORANGE }}>TEAM</span></h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} className="grid-3">
-            {team.map(t => (
-              <div key={t.name} className="team-card">
+            {team.map((t, i) => (
+              <div key={t.name} className={`team-card fade-up delay-${i+1}`}>
                 <img src={t.img} alt={t.name} className="team-img" />
                 <div style={{ background: CARD, padding: "20px 24px", borderTop: `3px solid ${ORANGE}` }}>
                   <h3 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase" }}>{t.name}</h3>
                   <p style={{ color: ORANGE, fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>{t.role}</p>
-                  <p style={{ fontSize: 13, color: "#888", lineHeight: 1.5 }}>{t.desc}</p>
+                  <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.5 }}>{t.desc}</p>
                 </div>
               </div>
             ))}
@@ -118,14 +118,14 @@ export const AboutPage = ({ setPage }) => {
                   <div className="heading-font" style={{ fontSize: 24, fontWeight: 900, color: ORANGE, flexShrink: 0 }}>{c.n}</div>
                   <div>
                     <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>{c.title}</h4>
-                    <p style={{ fontSize: 13, color: "#888", lineHeight: 1.6 }}>{c.desc}</p>
+                    <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6 }}>{c.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 40, display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <div style={{ color: ORANGE, fontSize: 60, lineHeight: 1, marginBottom: 20 }}>"</div>
-              <p style={{ fontSize: 18, fontStyle: "italic", color: "#ccc", lineHeight: 1.7, marginBottom: 24 }}>
+              <p style={{ fontSize: 18, fontStyle: "italic", color: MUTED, lineHeight: 1.7, marginBottom: 24 }}>
                 "When developers and government agencies need absolute certainty that an infrastructure project will be delivered on time, within budget, and to exact specifications, they call Gambalt."
               </p>
               <button className="btn-outline-orange" style={{ alignSelf: "flex-start" }} onClick={() => setPage("about")}>CREDIBILITY STATEMENT</button>
@@ -136,4 +136,3 @@ export const AboutPage = ({ setPage }) => {
     </div>
   );
 };
-

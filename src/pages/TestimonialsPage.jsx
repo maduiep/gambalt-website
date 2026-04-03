@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 
 export const TestimonialsPage = ({ setPage }) => {
@@ -31,17 +31,17 @@ export const TestimonialsPage = ({ setPage }) => {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
             {visible.map((t, i) => (
-              <div key={i} className="testimonial-card">
+              <div key={i} className="testimonial-card" style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 32 }}>
                 <span className="tag-orange" style={{ marginBottom: 16, display: "inline-block", textTransform: "uppercase" }}>{t.cat}</span>
                 <div style={{ color: ORANGE, fontSize: 40, lineHeight: 1, marginBottom: 12 }}>"</div>
-                <p style={{ fontSize: 13, color: "#ccc", lineHeight: 1.7, marginBottom: 20 }}>{t.text}</p>
+                <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.7, marginBottom: 20 }}>{t.text}</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ width: 42, height: 42, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 14 }}>
+                  <div style={{ width: 42, height: 42, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 14, color: "#fff" }}>
                     {t.name.split(" ").slice(-2).map(w => w[0]).join("")}
                   </div>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 600 }}>{t.name}</div>
-                    <div style={{ fontSize: 11, color: "#666" }}>{t.role}</div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: TEXT }}>{t.name}</div>
+                    <div style={{ fontSize: 11, color: MUTED }}>{t.role}</div>
                   </div>
                 </div>
               </div>
@@ -57,15 +57,15 @@ export const TestimonialsPage = ({ setPage }) => {
       <section style={{ background: DARK, padding: "80px 0" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase" }}>THE GAMBALT DIFFERENCE</h2>
-            <p style={{ color: "#777", marginTop: 12 }}>Consistent themes from our client feedback highlight our core operational values.</p>
+            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>THE GAMBALT DIFFERENCE</h2>
+            <p style={{ color: SUBTLE, marginTop: 12 }}>Consistent themes from our client feedback highlight our core operational values.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} className="grid-3">
             {[{ icon: "💬", title: "Transparent Communication", desc: "No hidden costs or surprise delays. We maintain open channels, providing detailed weekly reports and proactive issue resolution." }, { icon: "🦺", title: "Uncompromising Safety", desc: "Strict adherence to international HSE standards. We protect our workers, your site, and your investment with rigorous protocols." }, { icon: "🔬", title: "Engineering Precision", desc: "From initial geotechnical surveys to final structural sign-offs, our QA/QC processes ensure flawless execution." }].map(d => (
               <div key={d.title} style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 32, textAlign: "center" }}>
                 <div style={{ width: 60, height: 60, background: "rgba(232,84,26,0.15)", border: `1px solid rgba(232,84,26,0.3)`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", fontSize: 22 }}>{d.icon}</div>
-                <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", marginBottom: 12 }}>{d.title}</h4>
-                <p style={{ fontSize: 13, color: "#888", lineHeight: 1.6 }}>{d.desc}</p>
+                <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", color: TEXT }}>{d.title}</h4>
+                <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6 }}>{d.desc}</p>
               </div>
             ))}
           </div>
@@ -82,4 +82,3 @@ export const TestimonialsPage = ({ setPage }) => {
     </div>
   );
 };
-

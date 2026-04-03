@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 
 export const HomePage = ({ setPage }) => {
   const stats = [{ n: "15+", l: "Years Experience" }, { n: "250+", l: "Projects Completed" }, { n: "50+", l: "Active Projects" }, { n: "100%", l: "Safety Record" }];
@@ -42,7 +42,7 @@ export const HomePage = ({ setPage }) => {
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ maxWidth: 700 }}>
             <div className="orange-tag fade-up" style={{ marginBottom: 20 }}>BUILDING NIGERIA'S INFRASTRUCTURE</div>
-            <h1 className="heading-font fade-up-delay hero-title" style={{ fontSize: 80, fontWeight: 900, lineHeight: 0.95, textTransform: "uppercase", marginBottom: 24 }}>
+            <h1 className="heading-font fade-up-delay hero-title" style={{ fontSize: 80, fontWeight: 900, lineHeight: 0.95, textTransform: "uppercase", marginBottom: 24, color: "#fff" }}>
               BUILDING<br />NIGERIA'S<br /><span style={{ color: ORANGE }}>FUTURE TODAY</span>
             </h1>
             <p className="fade-up-delay2" style={{ fontSize: 16, color: "#ccc", maxWidth: 480, lineHeight: 1.7, marginBottom: 36 }}>
@@ -54,10 +54,10 @@ export const HomePage = ({ setPage }) => {
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginTop: 60 }} className="grid-4">
-            {stats.map(s => (
-              <div key={s.n} className="stat-card">
+            {stats.map((s, i) => (
+              <div key={s.n} className={`stat-card fade-up delay-${i+1}`} style={{ background: CARD, borderLeft: `3px solid ${ORANGE}` }}>
                 <div className="heading-font" style={{ fontSize: 40, fontWeight: 900, color: ORANGE }}>{s.n}</div>
-                <div style={{ fontSize: 12, color: "#999", letterSpacing: 1, textTransform: "uppercase" }}>{s.l}</div>
+                <div style={{ fontSize: 12, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>{s.l}</div>
               </div>
             ))}
           </div>
@@ -71,25 +71,25 @@ export const HomePage = ({ setPage }) => {
             <div>
               <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="construction" style={{ width: "100%", height: 380, objectFit: "cover" }} />
             </div>
-            <div>
-              <div className="section-tag">ABOUT GAMBALT</div>
-              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 24 }}>
+            <div className="fade-in">
+              <div className="section-tag slide-in-left">ABOUT GAMBALT</div>
+              <h2 className="heading-font slide-in-left delay-1" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 24, color: TEXT }}>
                 WE DELIVER INDUSTRIAL STRENGTH <span style={{ color: ORANGE }}>INFRASTRUCTURE</span>
               </h2>
-              <p style={{ fontSize: 15, color: "#aaa", lineHeight: 1.7, marginBottom: 20 }}>
+              <p className="fade-in delay-2" style={{ fontSize: 15, color: SUBTLE, lineHeight: 1.7, marginBottom: 20 }}>
                 From the Lagos-Ibadan Expressway to the Lekki Peninsula flood control network, our portfolio demonstrates our capacity to handle large-scale, complex engineering projects on time and within budget.
               </p>
-              {["End-to-end project management", "Heavy machinery deployment", "Strict adherence to national safety standards"].map(p => (
-                <div key={p} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+              {["End-to-end project management", "Heavy machinery deployment", "Strict adherence to national safety standards"].map((p, i) => (
+                <div key={p} className={`fade-in delay-${i+3}`} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                   <div style={{ width: 20, height: 20, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff", flexShrink: 0 }}>✓</div>
-                  <span style={{ fontSize: 14, color: "#ccc" }}>{p}</span>
+                  <span style={{ fontSize: 14, color: MUTED }}>{p}</span>
                 </div>
               ))}
-              <div style={{ display: "flex", gap: 32, marginTop: 32 }}>
-                <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>15+</div><div style={{ fontSize: 12, color: "#777" }}>YEARS EXPERIENCE</div></div>
-                <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>250+</div><div style={{ fontSize: 12, color: "#777" }}>PROJECTS DONE</div></div>
+              <div style={{ display: "flex", gap: 32, marginTop: 32 }} className="fade-up delay-5">
+                <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>15+</div><div style={{ fontSize: 12, color: SUBTLE }}>YEARS EXPERIENCE</div></div>
+                <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>250+</div><div style={{ fontSize: 12, color: SUBTLE }}>PROJECTS DONE</div></div>
               </div>
-              <button className="btn-orange" style={{ marginTop: 28 }} onClick={() => setPage("about")}>VIEW FULL PROFILE</button>
+              <button className="btn-orange fade-up" style={{ marginTop: 28 }} onClick={() => setPage("about")}>VIEW FULL PROFILE</button>
             </div>
           </div>
         </div>
@@ -100,17 +100,17 @@ export const HomePage = ({ setPage }) => {
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div className="section-tag">OUR EXPERTISE</div>
-            <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase" }}>CORE <span style={{ color: ORANGE }}>SERVICES</span></h2>
-            <p style={{ color: "#777", marginTop: 12, maxWidth: 500, margin: "12px auto 0" }}>
+            <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>CORE <span style={{ color: ORANGE }}>SERVICES</span></h2>
+            <p style={{ color: SUBTLE, marginTop: 12, maxWidth: 500, margin: "12px auto 0" }}>
               Comprehensive civil engineering solutions for commercial, industrial and government clients.
             </p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
-            {services.map(s => (
-              <div key={s.title} className="service-card" onClick={() => setPage("services")}>
+            {services.map((s, i) => (
+              <div key={s.title} className={`service-card fade-up delay-${(i % 3) + 1}`} onClick={() => setPage("services")} style={{ background: CARD, border: `1px solid ${BORDER}` }}>
                 <div style={{ fontSize: 32, marginBottom: 16 }}>{s.icon}</div>
-                <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", marginBottom: 12 }}>{s.title}</h3>
-                <p style={{ fontSize: 13, color: "#888", lineHeight: 1.6, marginBottom: 16 }}>{s.desc}</p>
+                <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 12 }}>{s.title}</h3>
+                <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6, marginBottom: 16 }}>{s.desc}</p>
                 <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>LEARN MORE →</span>
               </div>
             ))}
@@ -127,7 +127,7 @@ export const HomePage = ({ setPage }) => {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="grid-2">
             <div>
               <div className="section-tag">THE GAMBALT ADVANTAGE</div>
-              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 32 }}>
+              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 32, color: TEXT }}>
                 WHY PARTNER WITH <span style={{ color: ORANGE }}>GAMBALT</span>
               </h2>
               {[
@@ -138,16 +138,16 @@ export const HomePage = ({ setPage }) => {
                 <div key={r.title} style={{ display: "flex", gap: 16, marginBottom: 28 }}>
                   <div style={{ width: 4, background: ORANGE, flexShrink: 0 }} />
                   <div>
-                    <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>{r.title}</h4>
-                    <p style={{ fontSize: 13, color: "#888", lineHeight: 1.6 }}>{r.desc}</p>
+                    <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 6 }}>{r.title}</h4>
+                    <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6 }}>{r.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div style={{ position: "relative" }}>
               <img src="https://images.unsplash.com/photo-1581094488379-6a10d4e6f5f3?w=700&q=80" alt="team" style={{ width: "100%", height: 420, objectFit: "cover" }} />
-              <div style={{ position: "absolute", bottom: 24, left: 24, background: "rgba(0,0,0,0.9)", border: `1px solid ${BORDER}`, padding: "20px 24px", maxWidth: 320 }}>
-                <div style={{ fontSize: 13, color: "#ccc", fontStyle: "italic", lineHeight: 1.6, marginBottom: 12 }}>
+              <div style={{ position: "absolute", bottom: 24, left: 24, background: CARD, border: `1px solid ${BORDER}`, padding: "20px 24px", maxWidth: 320 }}>
+                <div style={{ fontSize: 13, color: MUTED, fontStyle: "italic", lineHeight: 1.6, marginBottom: 12 }}>
                   "We don't just build structures — we build the foundations the Nigerian economy depends on."
                 </div>
                 <div style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>ENGR. SAMUEL BJO — MANAGING DIRECTOR</div>
@@ -163,21 +163,21 @@ export const HomePage = ({ setPage }) => {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 36 }}>
             <div>
               <div className="section-tag">OUR PORTFOLIO</div>
-              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase" }}>RECENT <span style={{ color: ORANGE }}>PROJECTS</span></h2>
+              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>RECENT <span style={{ color: ORANGE }}>PROJECTS</span></h2>
             </div>
             <button className="btn-outline" onClick={() => setPage("projects")} style={{ flexShrink: 0 }}>VIEW ALL PROJECTS</button>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }} className="grid-2">
             {projects.map((p, i) => (
-              <div key={i} className="project-card" onClick={() => setPage(p.id)}>
+              <div key={i} className={`project-card scale-in delay-${(i % 2) + 1}`} onClick={() => setPage(p.id)} style={{ background: CARD, border: `1px solid ${BORDER}` }}>
                 <div className="project-overlay" />
                 <img src={p.img} alt={p.title} style={{ width: "100%", height: 240, objectFit: "cover" }} />
-                <div style={{ padding: "20px 24px", background: CARD }}>
+                <div style={{ padding: "20px 24px" }}>
                   <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
                     <span className="tag-orange">{p.cat}</span>
                     <span className="tag-green">{p.status}</span>
                   </div>
-                  <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>{p.title}</h3>
+                  <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 8 }}>{p.title}</h3>
                   <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>VIEW DETAILS →</span>
                 </div>
               </div>
@@ -191,21 +191,21 @@ export const HomePage = ({ setPage }) => {
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div className="section-tag">CLIENT SUCCESS</div>
-            <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase" }}>CLIENT <span style={{ color: ORANGE }}>TRUST</span></h2>
+            <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>CLIENT <span style={{ color: ORANGE }}>TRUST</span></h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
             {testimonials.map((t, i) => (
-              <div key={i} className="testimonial-card">
+              <div key={i} className="testimonial-card" style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 32 }}>
                 <span className="tag-orange" style={{ marginBottom: 16, display: "inline-block" }}>{t.cat}</span>
                 <div style={{ color: ORANGE, fontSize: 32, marginBottom: 12 }}>"</div>
-                <p style={{ fontSize: 13, color: "#ccc", lineHeight: 1.7, marginBottom: 20 }}>{t.text}</p>
+                <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.7, marginBottom: 20 }}>{t.text}</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ width: 40, height: 40, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700 }}>
+                  <div style={{ width: 40, height: 40, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, color: "#fff" }}>
                     {t.name.split(" ").map(w => w[0]).slice(0, 2).join("")}
                   </div>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{t.name}</div>
-                    <div style={{ fontSize: 11, color: "#777" }}>{t.role}</div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: TEXT }}>{t.name}</div>
+                    <div style={{ fontSize: 11, color: MUTED }}>{t.role}</div>
                   </div>
                 </div>
               </div>
@@ -230,4 +230,3 @@ export const HomePage = ({ setPage }) => {
     </div>
   );
 };
-

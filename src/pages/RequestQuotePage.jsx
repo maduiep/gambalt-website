@@ -1,42 +1,42 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ORANGE, BLACK, DARK, CARD, BORDER } from "../theme";
+import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 
 export const RequestQuotePage = ({ setPage }) => (
   <div style={{ background: BLACK, minHeight: "100vh", paddingTop: 68 }}>
     <div className="container" style={{ padding: "60px 32px" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 64 }} className="grid-2">
-        <div>
-          <h1 className="heading-font" style={{ fontSize: 60, fontWeight: 900, textTransform: "uppercase", lineHeight: 1, marginBottom: 24 }}>
+        <div className="fade-in">
+          <h1 className="heading-font slide-in-left" style={{ fontSize: 60, fontWeight: 900, textTransform: "uppercase", lineHeight: 1, marginBottom: 24, color: TEXT }}>
             REQUEST A <span style={{ color: ORANGE }}>QUOTE</span>
           </h1>
-          <p style={{ fontSize: 14, color: "#aaa", lineHeight: 1.7, marginBottom: 32 }}>
+          <p className="fade-in delay-1" style={{ fontSize: 14, color: SUBTLE, lineHeight: 1.7, marginBottom: 32 }}>
             Provide us with the details of your upcoming project. Our estimation team will review your requirements and deliver a comprehensive preliminary quote within 48 hours.
           </p>
-          {[{ icon: "⚡", text: "Fast 48-hour response time" }, { icon: "🔒", text: "100% secure and private data handling" }, { icon: "🦺", text: "Safety-first compliance on all estimates" }].map(f => (
-            <div key={f.text} style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
+          {[{ icon: "⚡", text: "Fast 48-hour response time" }, { icon: "🔒", text: "100% secure and private data handling" }, { icon: "🦺", text: "Safety-first compliance on all estimates" }].map((f, i) => (
+            <div key={f.text} className={`fade-in delay-${i+2}`} style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
               <div style={{ width: 28, height: 28, background: "rgba(232,84,26,0.2)", border: `1px solid rgba(232,84,26,0.4)`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12 }}>{f.icon}</div>
-              <span style={{ fontSize: 14, color: "#ccc" }}>{f.text}</span>
+              <span style={{ fontSize: 14, color: MUTED }}>{f.text}</span>
             </div>
           ))}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 32 }} className="fade-up delay-5">
             <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 20 }}>
-              <h4 className="heading-font" style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", marginBottom: 12 }}>REQUIRED INFO</h4>
-              <p style={{ fontSize: 12, color: "#777", marginBottom: 10 }}>To provide an accurate quote, we need:</p>
+              <h4 className="heading-font" style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 12 }}>REQUIRED INFO</h4>
+              <p style={{ fontSize: 12, color: SUBTLE, marginBottom: 10 }}>To provide an accurate quote, we need:</p>
               {["Project Scope", "Estimated Budget", "Desired Timeline"].map(i => (
-                <p key={i} style={{ fontSize: 12, color: "#999", marginBottom: 4 }}>· {i}</p>
+                <p key={i} style={{ fontSize: 12, color: MUTED, marginBottom: 4 }}>· {i}</p>
               ))}
             </div>
             <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 20 }}>
-              <h4 className="heading-font" style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", marginBottom: 12 }}>WHAT HAPPENS NEXT?</h4>
-              <p style={{ fontSize: 12, color: "#777", marginBottom: 10 }}>After submission, an engineer will contact you to verify details.</p>
+              <h4 className="heading-font" style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 12 }}>WHAT HAPPENS NEXT?</h4>
+              <p style={{ fontSize: 12, color: SUBTLE, marginBottom: 10 }}>After submission, an engineer will contact you to verify details.</p>
               <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700, cursor: "pointer" }} onClick={() => setPage("how-it-works")}>See How It Works →</span>
             </div>
           </div>
         </div>
 
-        <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 36 }}>
-          <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>PROJECT DETAILS FORM</h3>
-          <p style={{ fontSize: 12, color: "#666", marginBottom: 24 }}>Please fill out all required fields marked with an asterisk (*).</p>
+        <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 36 }} className="fade-up delay-3">
+          <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 6 }}>PROJECT DETAILS FORM</h3>
+          <p style={{ fontSize: 12, color: SUBTLE, marginBottom: 24 }}>Please fill out all required fields marked with an asterisk (*).</p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             <div className="form-group">
               <label className="form-label">First name *</label>
@@ -92,14 +92,13 @@ export const RequestQuotePage = ({ setPage }) => (
           </div>
           <div style={{ border: `2px dashed ${BORDER}`, padding: 24, textAlign: "center", marginBottom: 20, cursor: "pointer" }}>
             <div style={{ fontSize: 28, marginBottom: 8 }}>☁</div>
-            <p style={{ fontSize: 13, color: "#777" }}>Upload blueprints or RFP documents (Optional)</p>
-            <p style={{ fontSize: 11, color: "#555" }}>PDF, DOCX, JPG up to 10MB</p>
+            <p style={{ fontSize: 13, color: SUBTLE }}>Upload blueprints or RFP documents (Optional)</p>
+            <p style={{ fontSize: 11, color: MUTED }}>PDF, DOCX, JPG up to 10MB</p>
           </div>
           <button className="btn-orange" style={{ width: "100%", padding: 16, fontSize: 15 }} onClick={() => setPage("thank-you")}>SUBMIT QUOTE REQUEST</button>
-          <p style={{ fontSize: 11, color: "#555", textAlign: "center", marginTop: 12 }}>By submitting this form, you agree to our privacy policy and terms of service.</p>
+          <p style={{ fontSize: 11, color: MUTED, textAlign: "center", marginTop: 12 }}>By submitting this form, you agree to our privacy policy and terms of service.</p>
         </div>
       </div>
     </div>
   </div>
 );
-
