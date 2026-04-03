@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
+import { Reveal } from "../components/Reveal";
 
 export const ProjectsPage = ({ setPage }) => {
   const [filter, setFilter] = useState("All Projects");
@@ -17,6 +19,19 @@ export const ProjectsPage = ({ setPage }) => {
 
   const visible = filter === "All Projects" ? projects : projects.filter(p => p.tag === filter);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  };
+
   return (
     <div>
       <PageHero tag="OUR PORTFOLIO" title="DELIVERING" accent="EXCELLENCE ACROSS NIGERIA"
@@ -25,63 +40,110 @@ export const ProjectsPage = ({ setPage }) => {
 
       <section className="section" style={{ background: BLACK }}>
         <div className="container">
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40 }} className="fade-in">
+          <motion.div 
+            style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {filters.map((f, i) => (
-              <button key={f} className={`filter-btn ${filter === f ? "active" : ""} slide-in-left delay-${(i % 5) + 1}`} onClick={() => setFilter(f)}>{f}</button>
+              <motion.button 
+                key={f} 
+                variants={itemVariants}
+                className={`filter-btn ${filter === f ? "active" : ""}`} 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setFilter(f)}
+              >
+                {f}
+              </motion.button>
             ))}
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
-            {visible.map((p, i) => (
-              <div key={i} className={`project-card fade-up delay-${(i % 3) + 1}`} onClick={() => setPage(p.id)} style={{ background: CARD, border: `1px solid ${BORDER}` }}>
-                <div className="project-overlay" />
-                <div style={{ position: "relative" }} className="scale-in">
-                  <img src={p.img} alt={p.title} style={{ width: "100%", height: 200, objectFit: "cover" }} />
-                  <div style={{ position: "absolute", top: 12, left: 12, display: "flex", gap: 6 }}>
-                    <span className="tag-orange">{p.cat}</span>
+          </motion.div>
+
+          <motion.div 
+            layout
+            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} 
+            className="grid-3"
+          >
+            <AnimatePresence mode="popLayout">
+              {visible.map((p, i) => (
+                <motion.div 
+                  layout
+                  key={p.title}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="project-card" 
+                  onClick={() => setPage(p.id)} 
+                  style={{ background: CARD, border: `1px solid ${BORDER}` }}
+                  whileHover={{ y: -10 }}
+                >
+                  <div className="project-overlay" />
+                  <div style={{ position: "relative" }}>
+                    <img src={p.img} alt={p.title} style={{ width: "100%", height: 200, objectFit: "cover" }} />
+                    <div style={{ position: "absolute", top: 12, left: 12, display: "flex", gap: 6 }}>
+                      <span className="tag-orange">{p.cat}</span>
+                    </div>
+                    <div style={{ position: "absolute", top: 12, right: 12 }}>
+                      <span className="tag-green">{p.status}</span>
+                    </div>
                   </div>
-                  <div style={{ position: "absolute", top: 12, right: 12 }}>
-                    <span className="tag-green">{p.status}</span>
+                  <div style={{ padding: "20px 24px" }}>
+                    <h3 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", marginBottom: 8, color: TEXT }}>{p.title}</h3>
+                    <p style={{ fontSize: 12, color: SUBTLE, lineHeight: 1.5, marginBottom: 12 }}>{p.desc}</p>
+                    <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>VIEW DETAILS →</span>
                   </div>
-                </div>
-                <div style={{ padding: "20px 24px" }}>
-                  <h3 className="heading-font" style={{ fontSize: 18, fontWeight: 700, textTransform: "uppercase", marginBottom: 8, color: TEXT }}>{p.title}</h3>
-                  <p style={{ fontSize: 12, color: SUBTLE, lineHeight: 1.5, marginBottom: 12 }}>{p.desc}</p>
-                  <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>VIEW DETAILS →</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div style={{ textAlign: "center", marginTop: 40 }}>
-            <button className="btn-outline">LOAD MORE PROJECTS</button>
-          </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+          
+          <Reveal delay={0.4} y={10}>
+            <div style={{ textAlign: "center", marginTop: 40 }}>
+              <button className="btn-outline">LOAD MORE PROJECTS</button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Gov vendor bar */}
-      <div style={{ background: ORANGE, padding: "24px 0" }}>
-        <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
-          <div>
-            <div className="heading-font" style={{ fontSize: 20, fontWeight: 800, textTransform: "uppercase", color: "#000" }}>🏛 GOVERNMENT-READY VENDOR</div>
-            <p style={{ fontSize: 13, color: "rgba(0,0,0,0.7)" }}>Fully certified and compliant for municipal, state, and federal infrastructure contracts.</p>
-          </div>
-          <div style={{ display: "flex", gap: 12 }}>
-            {["FMWH CERTIFIED", "BPP REGISTERED"].map(b => (
-              <span key={b} style={{ border: "2px solid rgba(0,0,0,0.4)", padding: "8px 16px", fontFamily: "'Barlow Condensed'", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, color: "#000" }}>{b}</span>
-            ))}
+      <Reveal y={20}>
+        <div style={{ background: ORANGE, padding: "24px 0" }}>
+          <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+            <div>
+              <div className="heading-font" style={{ fontSize: 20, fontWeight: 800, textTransform: "uppercase", color: "#000" }}>🏛 GOVERNMENT-READY VENDOR</div>
+              <p style={{ fontSize: 13, color: "rgba(0,0,0,0.7)" }}>Fully certified and compliant for municipal, state, and federal infrastructure contracts.</p>
+            </div>
+            <motion.div 
+              style={{ display: "flex", gap: 12 }}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+            >
+              {["FMWH CERTIFIED", "BPP REGISTERED"].map(b => (
+                <motion.span key={b} variants={itemVariants} style={{ border: "2px solid rgba(0,0,0,0.4)", padding: "8px 16px", fontFamily: "'Barlow Condensed'", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, color: "#000" }}>{b}</motion.span>
+              ))}
+            </motion.div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* Have a project */}
       <section style={{ background: DARK, padding: "80px 0", textAlign: "center" }}>
         <div className="container">
-          <div style={{ fontSize: 40, marginBottom: 16 }}>🦺</div>
-          <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", marginBottom: 12, color: TEXT }}>HAVE A SIMILAR PROJECT IN MIND?</h2>
-          <p style={{ color: SUBTLE, marginBottom: 36, maxWidth: 500, margin: "12px auto 36px" }}>Contact our engineering team to discuss your specific infrastructure or construction needs.</p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
-            <button className="btn-orange" onClick={() => setPage("contact")}>CONTACT OUR TEAM</button>
-            <button className="btn-outline" onClick={() => setPage("about")}>VIEW COMPANY PROFILE</button>
-          </div>
+          <Reveal y={20}>
+            <div style={{ fontSize: 40, marginBottom: 16 }}>🦺</div>
+            <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", marginBottom: 12, color: TEXT }}>HAVE A SIMILAR PROJECT IN MIND?</h2>
+            <p style={{ color: SUBTLE, marginBottom: 36, maxWidth: 500, margin: "12px auto 36px" }}>Contact our engineering team to discuss your specific infrastructure or construction needs.</p>
+          </Reveal>
+          <Reveal delay={0.3} y={10}>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+              <button className="btn-orange" onClick={() => setPage("contact")}>CONTACT OUR TEAM</button>
+              <button className="btn-outline" onClick={() => setPage("about")}>VIEW COMPANY PROFILE</button>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

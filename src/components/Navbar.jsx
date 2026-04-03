@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ORANGE, BORDER } from "../theme";
 import { Logo } from "../components/Logo";
 
@@ -56,18 +57,39 @@ export const Navbar = ({ page, setPage, theme, setTheme }) => {
 
   return (
     <>
-      <nav style={navStyle} className="fade-in">
+      <motion.nav 
+        style={navStyle} 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 68 }}>
           <Logo onClick={() => setPage("home")} />
 
           {/* Desktop Navigation */}
           <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             {links.map((l, i) => (
-              <span key={l} className={`nav-link ${page === pageMap[l] ? "active" : ""} slide-in-right delta-${i+1}`}
-                style={{ animationDelay: `${0.2 + i * 0.1}s`, opacity: 0 }}
-                onClick={() => setPage(pageMap[l])}>{l}</span>
+              <motion.span 
+                key={l} 
+                className={`nav-link ${page === pageMap[l] ? "active" : ""}`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
+                onClick={() => setPage(pageMap[l])}
+              >
+                {l}
+              </motion.span>
             ))}
-            <button className="btn-orange" style={{ padding: "10px 20px", fontSize: 12 }} onClick={() => setPage("quote")}>REQUEST A QUOTE</button>
+            <motion.button 
+              className="btn-orange" 
+              style={{ padding: "10px 20px", fontSize: 12 }} 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
+              onClick={() => setPage("quote")}
+            >
+              REQUEST A QUOTE
+            </motion.button>
             <button
               className="btn-outline"
               style={{ padding: "8px", fontSize: 16, border: "1px solid var(--border-color, #2a2a2a)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", width: "36px", height: "36px" }}
@@ -89,59 +111,81 @@ export const Navbar = ({ page, setPage, theme, setTheme }) => {
             <span className="hamburger__line"></span>
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* Mobile Menu Overlay (backdrop) */}
-      <div
-        className={`mobile-overlay ${mobileOpen ? "is-visible" : ""}`}
-        onClick={() => setMobileOpen(false)}
-        aria-hidden="true"
-      />
+      {/* Mobile Menu AnimatePresence */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Mobile Menu Overlay (backdrop) */}
+            <motion.div
+              key="overlay"
+              className="mobile-overlay is-visible"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
+            />
 
-      {/* Mobile Slide-in Drawer */}
-      <div className={`mobile-drawer ${mobileOpen ? "is-open" : ""}`}>
-        {/* Drawer Header with theme toggle and close */}
-        <div className="mobile-drawer__header">
-          <Logo onClick={() => { setPage("home"); setMobileOpen(false); }} />
-          <button
-            className="mobile-drawer__theme-btn"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
-        </div>
-
-        {/* Decorative orange accent line */}
-        <div className="mobile-drawer__accent" />
-
-        {/* Navigation Links */}
-        <nav className="mobile-drawer__nav">
-          {links.map((l, i) => (
-            <a
-              key={l}
-              className={`mobile-drawer__link ${page === pageMap[l] ? "is-active" : ""}`}
-              onClick={() => handleNavClick(l)}
-              style={{ transitionDelay: mobileOpen ? `${0.1 + i * 0.05}s` : "0s" }}
+            {/* Mobile Slide-in Drawer */}
+            <motion.div 
+              key="drawer"
+              className="mobile-drawer is-open"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
-              <span className="mobile-drawer__link-index">0{i + 1}</span>
-              <span className="mobile-drawer__link-text">{l}</span>
-              {page === pageMap[l] && <span className="mobile-drawer__link-dot" />}
-            </a>
-          ))}
-        </nav>
+              {/* Drawer Header with theme toggle and close */}
+              <div className="mobile-drawer__header">
+                <Logo onClick={() => { setPage("home"); setMobileOpen(false); }} />
+                <button
+                  className="mobile-drawer__theme-btn"
+                  onClick={toggleTheme}
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? '☀️' : '🌙'}
+                </button>
+              </div>
 
-        {/* CTA Button */}
-        <div className="mobile-drawer__footer">
-          <button
-            className="btn-orange mobile-drawer__cta"
-            onClick={() => { setPage("quote"); setMobileOpen(false); }}
-            style={{ transitionDelay: mobileOpen ? `${0.1 + links.length * 0.05}s` : "0s" }}
-          >
-            REQUEST A QUOTE
-          </button>
-        </div>
-      </div>
+              {/* Decorative orange accent line */}
+              <div className="mobile-drawer__accent" />
+
+              {/* Navigation Links */}
+              <nav className="mobile-drawer__nav">
+                {links.map((l, i) => (
+                  <motion.a
+                    key={l}
+                    className={`mobile-drawer__link ${page === pageMap[l] ? "is-active" : ""}`}
+                    onClick={() => handleNavClick(l)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                  >
+                    <span className="mobile-drawer__link-index">0{i + 1}</span>
+                    <span className="mobile-drawer__link-text">{l}</span>
+                    {page === pageMap[l] && <span className="mobile-drawer__link-dot" />}
+                  </motion.a>
+                ))}
+              </nav>
+
+              {/* CTA Button */}
+              <div className="mobile-drawer__footer">
+                <motion.button
+                  className="btn-orange mobile-drawer__cta"
+                  onClick={() => { setPage("quote"); setMobileOpen(false); }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + links.length * 0.05 }}
+                >
+                  REQUEST A QUOTE
+                </motion.button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

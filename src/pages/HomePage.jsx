@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
+import { Reveal } from "../components/Reveal";
 
 export const HomePage = ({ setPage }) => {
   const stats = [{ n: "15+", l: "Years Experience" }, { n: "250+", l: "Projects Completed" }, { n: "50+", l: "Active Projects" }, { n: "100%", l: "Safety Record" }];
@@ -26,6 +28,19 @@ export const HomePage = ({ setPage }) => {
     { text: "We hired Gambalt for a custom industrial facility build. What impressed me most was their transparency. Every BOQ was detailed, every weekly report was accurate.", name: "David Okafor", role: "CEO, Prime Logistics Hub", cat: "PRIVATE OWNER" },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  };
+
   return (
     <div>
       {/* Hero */}
@@ -41,26 +56,41 @@ export const HomePage = ({ setPage }) => {
         </div>
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ maxWidth: 700 }}>
-            <div className="orange-tag fade-up" style={{ marginBottom: 20 }}>BUILDING NIGERIA'S INFRASTRUCTURE</div>
-            <h1 className="heading-font fade-up-delay hero-title" style={{ fontSize: 80, fontWeight: 900, lineHeight: 0.95, textTransform: "uppercase", marginBottom: 24, color: "#fff" }}>
-              BUILDING<br />NIGERIA'S<br /><span style={{ color: ORANGE }}>FUTURE TODAY</span>
-            </h1>
-            <p className="fade-up-delay2" style={{ fontSize: 16, color: "#ccc", maxWidth: 480, lineHeight: 1.7, marginBottom: 36 }}>
-              Gambalt is a premier civil engineering and infrastructure consultancy delivering industrial-strength solutions across Nigeria. We focus on long-term structural integrity and seamless project execution.
-            </p>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <button className="btn-orange" onClick={() => setPage("contact")}>CONSULTATION →</button>
-              <button className="btn-outline" onClick={() => setPage("quote")}>REQUEST A QUOTE</button>
-            </div>
+            <Reveal x={-30}>
+              <div className="orange-tag" style={{ marginBottom: 20 }}>BUILDING NIGERIA'S INFRASTRUCTURE</div>
+            </Reveal>
+            <Reveal delay={0.2} x={-50}>
+              <h1 className="heading-font hero-title" style={{ fontSize: 80, fontWeight: 900, lineHeight: 0.95, textTransform: "uppercase", marginBottom: 24, color: "#fff" }}>
+                BUILDING<br />NIGERIA'S<br /><span style={{ color: ORANGE }}>FUTURE TODAY</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={0.4} y={20}>
+              <p style={{ fontSize: 16, color: "#ccc", maxWidth: 480, lineHeight: 1.7, marginBottom: 36 }}>
+                Gambalt is a premier civil engineering and infrastructure consultancy delivering industrial-strength solutions across Nigeria. We focus on long-term structural integrity and seamless project execution.
+              </p>
+            </Reveal>
+            <Reveal delay={0.6} y={10}>
+              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                <button className="btn-orange" onClick={() => setPage("contact")}>CONSULTATION →</button>
+                <button className="btn-outline" onClick={() => setPage("quote")}>REQUEST A QUOTE</button>
+              </div>
+            </Reveal>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginTop: 60 }} className="grid-4">
+          <motion.div 
+            style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginTop: 60 }} 
+            className="grid-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {stats.map((s, i) => (
-              <div key={s.n} className={`stat-card fade-up delay-${i+1}`} style={{ background: CARD, borderLeft: `3px solid ${ORANGE}` }}>
+              <motion.div key={s.n} variants={itemVariants} className="stat-card" style={{ background: CARD, borderLeft: `3px solid ${ORANGE}` }}>
                 <div className="heading-font" style={{ fontSize: 40, fontWeight: 900, color: ORANGE }}>{s.n}</div>
                 <div style={{ fontSize: 12, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>{s.l}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -68,28 +98,41 @@ export const HomePage = ({ setPage }) => {
       <section style={{ background: DARK, padding: "80px 0" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="grid-2">
-            <div>
+            <Reveal scale={0.95}>
               <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="construction" style={{ width: "100%", height: 380, objectFit: "cover" }} />
-            </div>
-            <div className="fade-in">
-              <div className="section-tag slide-in-left">ABOUT GAMBALT</div>
-              <h2 className="heading-font slide-in-left delay-1" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 24, color: TEXT }}>
-                WE DELIVER INDUSTRIAL STRENGTH <span style={{ color: ORANGE }}>INFRASTRUCTURE</span>
-              </h2>
-              <p className="fade-in delay-2" style={{ fontSize: 15, color: SUBTLE, lineHeight: 1.7, marginBottom: 20 }}>
-                From the Lagos-Ibadan Expressway to the Lekki Peninsula flood control network, our portfolio demonstrates our capacity to handle large-scale, complex engineering projects on time and within budget.
-              </p>
-              {["End-to-end project management", "Heavy machinery deployment", "Strict adherence to national safety standards"].map((p, i) => (
-                <div key={p} className={`fade-in delay-${i+3}`} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                  <div style={{ width: 20, height: 20, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff", flexShrink: 0 }}>✓</div>
-                  <span style={{ fontSize: 14, color: MUTED }}>{p}</span>
+            </Reveal>
+            <div>
+              <Reveal x={30}>
+                <div className="section-tag">ABOUT GAMBALT</div>
+                <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 24, color: TEXT }}>
+                  WE DELIVER INDUSTRIAL STRENGTH <span style={{ color: ORANGE }}>INFRASTRUCTURE</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={0.2} y={20}>
+                <p style={{ fontSize: 15, color: SUBTLE, lineHeight: 1.7, marginBottom: 20 }}>
+                  From the Lagos-Ibadan Expressway to the Lekki Peninsula flood control network, our portfolio demonstrates our capacity to handle large-scale, complex engineering projects on time and within budget.
+                </p>
+              </Reveal>
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                {["End-to-end project management", "Heavy machinery deployment", "Strict adherence to national safety standards"].map((p, i) => (
+                  <motion.div key={p} variants={itemVariants} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                    <div style={{ width: 20, height: 20, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff", flexShrink: 0 }}>✓</div>
+                    <span style={{ fontSize: 14, color: MUTED }}>{p}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+              <Reveal delay={0.5} y={10}>
+                <div style={{ display: "flex", gap: 32, marginTop: 32 }}>
+                  <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>15+</div><div style={{ fontSize: 12, color: SUBTLE }}>YEARS EXPERIENCE</div></div>
+                  <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>250+</div><div style={{ fontSize: 12, color: SUBTLE }}>PROJECTS DONE</div></div>
                 </div>
-              ))}
-              <div style={{ display: "flex", gap: 32, marginTop: 32 }} className="fade-up delay-5">
-                <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>15+</div><div style={{ fontSize: 12, color: SUBTLE }}>YEARS EXPERIENCE</div></div>
-                <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>250+</div><div style={{ fontSize: 12, color: SUBTLE }}>PROJECTS DONE</div></div>
-              </div>
-              <button className="btn-orange fade-up" style={{ marginTop: 28 }} onClick={() => setPage("about")}>VIEW FULL PROFILE</button>
+                <button className="btn-orange" style={{ marginTop: 28 }} onClick={() => setPage("about")}>VIEW FULL PROFILE</button>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -98,26 +141,44 @@ export const HomePage = ({ setPage }) => {
       {/* Core Services */}
       <section className="section" style={{ background: BLACK }}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div className="section-tag">OUR EXPERTISE</div>
-            <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>CORE <span style={{ color: ORANGE }}>SERVICES</span></h2>
-            <p style={{ color: SUBTLE, marginTop: 12, maxWidth: 500, margin: "12px auto 0" }}>
-              Comprehensive civil engineering solutions for commercial, industrial and government clients.
-            </p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
+          <Reveal y={20}>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <div className="section-tag">OUR EXPERTISE</div>
+              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>CORE <span style={{ color: ORANGE }}>SERVICES</span></h2>
+              <p style={{ color: SUBTLE, marginTop: 12, maxWidth: 500, margin: "12px auto 0" }}>
+                Comprehensive civil engineering solutions for commercial, industrial and government clients.
+              </p>
+            </div>
+          </Reveal>
+          <motion.div 
+            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} 
+            className="grid-3"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {services.map((s, i) => (
-              <div key={s.title} className={`service-card fade-up delay-${(i % 3) + 1}`} onClick={() => setPage("services")} style={{ background: CARD, border: `1px solid ${BORDER}` }}>
+              <motion.div 
+                key={s.title} 
+                className="service-card" 
+                variants={itemVariants}
+                whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.4)" }}
+                onClick={() => setPage("services")} 
+                style={{ background: CARD, border: `1px solid ${BORDER}` }}
+              >
                 <div style={{ fontSize: 32, marginBottom: 16 }}>{s.icon}</div>
                 <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 12 }}>{s.title}</h3>
                 <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6, marginBottom: 16 }}>{s.desc}</p>
                 <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>LEARN MORE →</span>
-              </div>
+              </motion.div>
             ))}
-          </div>
-          <div style={{ textAlign: "center", marginTop: 36 }}>
-            <button className="btn-outline" onClick={() => setPage("services")}>VIEW ALL SERVICES</button>
-          </div>
+          </motion.div>
+          <Reveal delay={0.3} y={10}>
+            <div style={{ textAlign: "center", marginTop: 36 }}>
+              <button className="btn-outline" onClick={() => setPage("services")}>VIEW ALL SERVICES</button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -126,33 +187,49 @@ export const HomePage = ({ setPage }) => {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="grid-2">
             <div>
-              <div className="section-tag">THE GAMBALT ADVANTAGE</div>
-              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 32, color: TEXT }}>
-                WHY PARTNER WITH <span style={{ color: ORANGE }}>GAMBALT</span>
-              </h2>
-              {[
-                { title: "Government-Ready Vendor", desc: "Fully registered with relevant government bodies, making us an ideal choice for municipal, state, and federal infrastructure contracts." },
-                { title: "Heavy Machinery Fleet", desc: "Unlike firms that rely on rentals, Gambalt owns a massive fleet of heavy construction and infrastructure equipment." },
-                { title: "Uncompromising Safety", desc: "Zero-incident culture: every site follows strict HSE standards and our project managers prioritize safety at every level." },
-              ].map(r => (
-                <div key={r.title} style={{ display: "flex", gap: 16, marginBottom: 28 }}>
-                  <div style={{ width: 4, background: ORANGE, flexShrink: 0 }} />
-                  <div>
-                    <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 6 }}>{r.title}</h4>
-                    <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6 }}>{r.desc}</p>
+              <Reveal x={-30}>
+                <div className="section-tag">THE GAMBALT ADVANTAGE</div>
+                <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 32, color: TEXT }}>
+                  WHY PARTNER WITH <span style={{ color: ORANGE }}>GAMBALT</span>
+                </h2>
+              </Reveal>
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                {[
+                  { title: "Government-Ready Vendor", desc: "Fully registered with relevant government bodies, making us an ideal choice for municipal, state, and federal infrastructure contracts." },
+                  { title: "Heavy Machinery Fleet", desc: "Unlike firms that rely on rentals, Gambalt owns a massive fleet of heavy construction and infrastructure equipment." },
+                  { title: "Uncompromising Safety", desc: "Zero-incident culture: every site follows strict HSE standards and our project managers prioritize safety at every level." },
+                ].map(r => (
+                  <motion.div key={r.title} variants={itemVariants} style={{ display: "flex", gap: 16, marginBottom: 28 }}>
+                    <div style={{ width: 4, background: ORANGE, flexShrink: 0 }} />
+                    <div>
+                      <h4 className="heading-font" style={{ fontSize: 16, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 6 }}>{r.title}</h4>
+                      <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.6 }}>{r.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+            <Reveal scale={0.95}>
+              <div style={{ position: "relative" }}>
+                <img src="https://images.unsplash.com/photo-1581094488379-6a10d4e6f5f3?w=700&q=80" alt="team" style={{ width: "100%", height: 420, objectFit: "cover" }} />
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                  style={{ position: "absolute", bottom: 24, left: 24, background: CARD, border: `1px solid ${BORDER}`, padding: "20px 24px", maxWidth: 320 }}
+                >
+                  <div style={{ fontSize: 13, color: MUTED, fontStyle: "italic", lineHeight: 1.6, marginBottom: 12 }}>
+                    "We don't just build structures — we build the foundations the Nigerian economy depends on."
                   </div>
-                </div>
-              ))}
-            </div>
-            <div style={{ position: "relative" }}>
-              <img src="https://images.unsplash.com/photo-1581094488379-6a10d4e6f5f3?w=700&q=80" alt="team" style={{ width: "100%", height: 420, objectFit: "cover" }} />
-              <div style={{ position: "absolute", bottom: 24, left: 24, background: CARD, border: `1px solid ${BORDER}`, padding: "20px 24px", maxWidth: 320 }}>
-                <div style={{ fontSize: 13, color: MUTED, fontStyle: "italic", lineHeight: 1.6, marginBottom: 12 }}>
-                  "We don't just build structures — we build the foundations the Nigerian economy depends on."
-                </div>
-                <div style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>ENGR. SAMUEL BJO — MANAGING DIRECTOR</div>
+                  <div style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>ENGR. SAMUEL BJO — MANAGING DIRECTOR</div>
+                </motion.div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -161,15 +238,33 @@ export const HomePage = ({ setPage }) => {
       <section className="section" style={{ background: BLACK }}>
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 36 }}>
-            <div>
-              <div className="section-tag">OUR PORTFOLIO</div>
-              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>RECENT <span style={{ color: ORANGE }}>PROJECTS</span></h2>
-            </div>
-            <button className="btn-outline" onClick={() => setPage("projects")} style={{ flexShrink: 0 }}>VIEW ALL PROJECTS</button>
+            <Reveal x={-20}>
+              <div>
+                <div className="section-tag">OUR PORTFOLIO</div>
+                <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>RECENT <span style={{ color: ORANGE }}>PROJECTS</span></h2>
+              </div>
+            </Reveal>
+            <Reveal x={20}>
+              <button className="btn-outline" onClick={() => setPage("projects")} style={{ flexShrink: 0 }}>VIEW ALL PROJECTS</button>
+            </Reveal>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }} className="grid-2">
+          <motion.div 
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }} 
+            className="grid-2"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {projects.map((p, i) => (
-              <div key={i} className={`project-card scale-in delay-${(i % 2) + 1}`} onClick={() => setPage(p.id)} style={{ background: CARD, border: `1px solid ${BORDER}` }}>
+              <motion.div 
+                key={i} 
+                className="project-card" 
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setPage(p.id)} 
+                style={{ background: CARD, border: `1px solid ${BORDER}` }}
+              >
                 <div className="project-overlay" />
                 <img src={p.img} alt={p.title} style={{ width: "100%", height: 240, objectFit: "cover" }} />
                 <div style={{ padding: "20px 24px" }}>
@@ -180,22 +275,31 @@ export const HomePage = ({ setPage }) => {
                   <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 8 }}>{p.title}</h3>
                   <span style={{ color: ORANGE, fontSize: 12, fontWeight: 700 }}>VIEW DETAILS →</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Testimonials */}
       <section style={{ background: DARK, padding: "80px 0" }}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div className="section-tag">CLIENT SUCCESS</div>
-            <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>CLIENT <span style={{ color: ORANGE }}>TRUST</span></h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
+          <Reveal y={20}>
+            <div style={{ textAlign: "center", marginBottom: 48 }}>
+              <div className="section-tag">CLIENT SUCCESS</div>
+              <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>CLIENT <span style={{ color: ORANGE }}>TRUST</span></h2>
+            </div>
+          </Reveal>
+          <motion.div 
+            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} 
+            className="grid-3"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {testimonials.map((t, i) => (
-              <div key={i} className="testimonial-card" style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 32 }}>
+              <motion.div key={i} variants={itemVariants} className="testimonial-card" style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 32 }}>
                 <span className="tag-orange" style={{ marginBottom: 16, display: "inline-block" }}>{t.cat}</span>
                 <div style={{ color: ORANGE, fontSize: 32, marginBottom: 12 }}>"</div>
                 <p style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.7, marginBottom: 20 }}>{t.text}</p>
@@ -208,25 +312,27 @@ export const HomePage = ({ setPage }) => {
                     <div style={{ fontSize: 11, color: MUTED }}>{t.role}</div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <div className="cta-section">
-        <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
-          <h2 className="heading-font" style={{ fontSize: 52, fontWeight: 900, textTransform: "uppercase", marginBottom: 16 }}>READY TO BREAK GROUND?</h2>
-          <p style={{ fontSize: 16, opacity: 0.9, marginBottom: 36, maxWidth: 500, margin: "0 auto 36px" }}>
-            Our structural, transparent teams are ready for your next big project. Let's build together.
-          </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <button className="btn-black" onClick={() => setPage("contact")}>📞 +234 (0) 800 GAMBALT</button>
-            <button style={{ background: "transparent", border: "2px solid rgba(0,0,0,0.4)", color: "#000", padding: "12px 28px", fontFamily: "'Barlow Condensed'", fontWeight: 700, fontSize: 14, letterSpacing: 1.5, textTransform: "uppercase", cursor: "pointer" }} onClick={() => setPage("quote")}>SUBMIT AN ENQUIRY</button>
+      <Reveal y={40}>
+        <div className="cta-section">
+          <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
+            <h2 className="heading-font" style={{ fontSize: 52, fontWeight: 900, textTransform: "uppercase", marginBottom: 16 }}>READY TO BREAK GROUND?</h2>
+            <p style={{ fontSize: 16, opacity: 0.9, marginBottom: 36, maxWidth: 500, margin: "0 auto 36px" }}>
+              Our structural, transparent teams are ready for your next big project. Let's build together.
+            </p>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+              <button className="btn-black" onClick={() => setPage("contact")}>📞 +234 (0) 800 GAMBALT</button>
+              <button style={{ background: "transparent", border: "2px solid rgba(0,0,0,0.4)", color: "#000", padding: "12px 28px", fontFamily: "'Barlow Condensed'", fontWeight: 700, fontSize: 14, letterSpacing: 1.5, textTransform: "uppercase", cursor: "pointer" }} onClick={() => setPage("quote")}>SUBMIT AN ENQUIRY</button>
+            </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 };
