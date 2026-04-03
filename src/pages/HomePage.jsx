@@ -65,7 +65,7 @@ export const HomePage = ({ setPage }) => {
               </h1>
             </Reveal>
             <Reveal delay={0.4} y={20}>
-              <p style={{ fontSize: 16, color: "#ccc", maxWidth: 480, lineHeight: 1.7, marginBottom: 36 }}>
+              <p style={{ fontSize: 16, color: "#fff", opacity: 0.85, maxWidth: 480, lineHeight: 1.7, marginBottom: 36 }}>
                 Gambalt is a premier civil engineering and infrastructure consultancy delivering industrial-strength solutions across Nigeria. We focus on long-term structural integrity and seamless project execution.
               </p>
             </Reveal>

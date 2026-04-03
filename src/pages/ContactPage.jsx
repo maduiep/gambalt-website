@@ -26,7 +26,7 @@ export const ContactPage = ({ setPage }) => {
             <h1 className="heading-font" style={{ fontSize: 68, fontWeight: 900, textTransform: "uppercase", lineHeight: 1, color: "#fff" }}>LET'S BUILD <span style={{ color: ORANGE }}>TOGETHER</span></h1>
           </Reveal>
           <Reveal delay={0.2} y={20}>
-            <p style={{ fontSize: 15, color: "#ccc", maxWidth: 520, margin: "16px auto 0", lineHeight: 1.6 }}>Ready to start your next infrastructure project? Contact our team of experts for a comprehensive consultation and precise execution strategy.</p>
+            <p style={{ fontSize: 15, color: "#fff", opacity: 0.85, maxWidth: 520, margin: "16px auto 0", lineHeight: 1.6 }}>Ready to start your next infrastructure project? Contact our team of experts for a comprehensive consultation and precise execution strategy.</p>
           </Reveal>
         </div>
       </div>
