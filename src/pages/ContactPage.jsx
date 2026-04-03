@@ -19,7 +19,7 @@ export const ContactPage = ({ setPage }) => {
 
   return (
     <div>
-      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80') center/cover`, minHeight: 480, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", paddingTop: 68 }} className="blur-in">
+      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80') center/cover`, minHeight: 480, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", paddingTop: 140 }} className="blur-in">
         <div className="container">
           <Reveal x={-30}>
             <div className="orange-tag" style={{ marginBottom: 20 }}>GET IN TOUCH</div>

@@ -23,7 +23,7 @@ export const ProjectDetailPage = ({ setPage }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        style={{ background: `url('https://images.unsplash.com/photo-1460574283810-2aab119d8511?w=1600&q=80') center/cover`, height: 400, paddingTop: 68 }} 
+        style={{ background: `url('https://images.unsplash.com/photo-1460574283810-2aab119d8511?w=1600&q=80') center/cover`, height: 400, paddingTop: 120 }} 
       />
       <section style={{ background: BLACK, padding: "60px 0" }}>
         <div className="container">

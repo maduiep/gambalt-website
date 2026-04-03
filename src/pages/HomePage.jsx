@@ -32,7 +32,7 @@ export const HomePage = ({ setPage }) => {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
@@ -44,38 +44,17 @@ export const HomePage = ({ setPage }) => {
   return (
     <div>
       {/* Hero */}
-      <div className="hero-bg" style={{ paddingTop: 132, paddingBottom: 64, position: "relative", backgroundColor: "#000", backgroundImage: "none" }}>
-        {/* Background Video */}
-        <motion.video
-          src={videoUrl}
-          autoPlay
-          muted
-          loop
-          playsInline
-          onLoadedData={() => setVideoLoaded(true)}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: videoLoaded ? 1 : 0 }}
-          transition={{ duration: 1.5 }}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: 0
-          }}
-        />
-
-        <div className="hero-shape hero-shape-tr" style={{ zIndex: 1 }} />
-        <div className="hero-shape hero-shape-br" style={{ zIndex: 1 }} />
-        <div className="hero-shape hero-shape-left-orange" style={{ zIndex: 1 }} />
-        <div className="hero-shape hero-shape-left-dark" style={{ zIndex: 1, opacity: 0.9 }} />
-        <div className="hero-ruler" style={{ zIndex: 1 }} />
-        <div className="hero-circle" style={{ zIndex: 2 }}><div style={{width:4, height:4, borderRadius:'50%', background:ORANGE, margin:'auto', marginTop:3}}/></div>
-        <div className="hero-scroll-btn" style={{ zIndex: 2 }} onClick={() => window.scrollTo({top: 800, behavior: 'smooth'})}>
+      <div className="hero-bg" style={{ paddingTop: 160, paddingBottom: 64 }}>
+        <div className="hero-shape hero-shape-tr" />
+        <div className="hero-shape hero-shape-br" />
+        <div className="hero-shape hero-shape-left-orange" />
+        <div className="hero-shape hero-shape-left-dark" />
+        <div className="hero-ruler" />
+        <div className="hero-circle"><div style={{width:4, height:4, borderRadius:'50%', background:ORANGE, margin:'auto', marginTop:3}}/></div>
+        <div className="hero-scroll-btn" onClick={() => window.scrollTo({top: 800, behavior: 'smooth'})}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         </div>
-        <div className="container" style={{ position: "relative", zIndex: 3 }}>
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ maxWidth: 700 }}>
             <Reveal x={-30}>
               <div className="orange-tag" style={{ marginBottom: 20 }}>BUILDING NIGERIA'S INFRASTRUCTURE</div>

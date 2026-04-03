@@ -19,7 +19,7 @@ export const ServiceDetailPage = ({ setPage }) => {
 
   return (
     <div>
-      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover`, minHeight: 400, display: "flex", alignItems: "flex-end", paddingBottom: 48, paddingTop: 68 }} className="blur-in">
+      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover`, minHeight: 400, display: "flex", alignItems: "flex-end", paddingBottom: 48, paddingTop: 120 }} className="blur-in">
         <div className="container">
           <Reveal x={-20}>
             <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
