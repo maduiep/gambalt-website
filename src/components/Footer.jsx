@@ -75,7 +75,7 @@ export const Footer = ({ setPage }) => {
           <motion.div variants={itemVariants}>
             <p className="heading-font" style={{ fontSize: 13, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 20, color: TEXT }}>Head Office</p>
             <div style={{ fontSize: 13, color: SUBTLE, lineHeight: 1.8 }}>
-              <p style={{ marginBottom: 8 }}>📍 15 Industrial Avenue, Victoria Island, Lagos, Nigeria</p>
+              <p style={{ marginBottom: 8 }}>📍 No. 4 Bama Close, off Gwari Avenue,<br/>2nd Floor, Suite A8, Barnawa,<br/>Kaduna State, Nigeria</p>
               <p style={{ marginBottom: 8 }}>📞 +234 (0) 802 854 2972</p>
               <p style={{ marginBottom: 8 }}>📞 +234 (0) 901 234 5678</p>
               <p style={{ marginBottom: 4 }}>✉ info@gambalt.com</p>

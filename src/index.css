@@ -718,3 +718,9 @@ body[data-theme='light'] {
   .tag-orange { background: rgba(232,84,26,0.2); color: #E8541A; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; }
   .tag-blue { background: rgba(59,130,246,0.2); color: #60a5fa; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; }
 
+.hero-subtitle-fix {
+  color: #ffffff !important;
+  opacity: 0.9 !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+}

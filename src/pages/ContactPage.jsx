@@ -26,7 +26,7 @@ export const ContactPage = ({ setPage }) => {
             <h1 className="heading-font" style={{ fontSize: 68, fontWeight: 900, textTransform: "uppercase", lineHeight: 1, color: "#fff" }}>LET'S BUILD <span style={{ color: ORANGE }}>TOGETHER</span></h1>
           </Reveal>
           <Reveal delay={0.2} y={20}>
-            <p style={{ fontSize: 15, color: "#fff", opacity: 0.85, maxWidth: 520, margin: "16px auto 0", lineHeight: 1.6 }}>Ready to start your next infrastructure project? Contact our team of experts for a comprehensive consultation and precise execution strategy.</p>
+            <p className="hero-subtitle-fix" style={{ fontSize: 15, maxWidth: 520, margin: "16px auto 0", lineHeight: 1.6 }}>Ready to start your next infrastructure project? Contact our team of experts for a comprehensive consultation and precise execution strategy.</p>
           </Reveal>
         </div>
       </div>
@@ -46,7 +46,7 @@ export const ContactPage = ({ setPage }) => {
                 viewport={{ once: true }}
               >
                 {[
-                  { icon: "📍", title: "HEAD OFFICE", lines: ["15 Industrial Avenue,", "Victoria Island,", "Lagos, Nigeria"] }, 
+                  { icon: "📍", title: "HEAD OFFICE", lines: ["No. 4 Bama Close, off Gwari Avenue,", "2nd Floor, Suite A8, Barnawa,", "Kaduna State, Nigeria"] }, 
                   { icon: "📞", title: "PHONE", lines: ["08028542972"] }, 
                   { icon: "✉", title: "EMAIL", lines: ["gambalt.partnersltd@yahoo.com"] }, 
                   { icon: "🕐", title: "BUSINESS HOURS", lines: ["Monday – Friday", "8:00 AM – 5:00 PM"] }
@@ -70,7 +70,7 @@ export const ContactPage = ({ setPage }) => {
                 <div style={{ background: CARD, height: 200, display: "flex", alignItems: "center", justifyContent: "center", border: `1px solid ${BORDER}`, marginTop: 8 }}>
                   <div style={{ textAlign: "center", color: SUBTLE }}>
                     <div style={{ fontSize: 32, marginBottom: 8 }}>🗺</div>
-                    <p style={{ fontSize: 13 }}>Victoria Island, Lagos</p>
+                    <p style={{ fontSize: 13 }}>Barnawa, Kaduna</p>
                     <p style={{ fontSize: 11 }}>Map embed available in production</p>
                   </div>
                 </div>
