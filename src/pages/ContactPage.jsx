@@ -67,12 +67,16 @@ export const ContactPage = ({ setPage }) => {
                 ))}
               </motion.div>
               <Reveal scale={0.95} delay={0.4}>
-                <div style={{ background: CARD, height: 200, display: "flex", alignItems: "center", justifyContent: "center", border: `1px solid ${BORDER}`, marginTop: 8 }}>
-                  <div style={{ textAlign: "center", color: SUBTLE }}>
-                    <div style={{ fontSize: 32, marginBottom: 8 }}>🗺</div>
-                    <p style={{ fontSize: 13 }}>Barnawa, Kaduna</p>
-                    <p style={{ fontSize: 11 }}>Map embed available in production</p>
-                  </div>
+                <div style={{ marginTop: 8, height: 260, border: `1px solid ${BORDER}`, overflow: "hidden", background: CARD }}>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31386.994852197815!2d7.419690248478904!3d10.471126138203775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104d359dc3778389%3A0x8d262baff15aeb5f!2sBarnawa%2C%20Kaduna!5e0!3m2!1sen!2sng!4v1775440790324!5m2!1sen!2sng" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </Reveal>
             </div>
