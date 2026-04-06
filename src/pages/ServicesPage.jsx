@@ -8,10 +8,10 @@ import heroImg from "../assets/images/Services Hero Image.png";
 export const ServicesPage = ({ setPage }) => {
   const [expanded, setExpanded] = useState(0);
   const services = [
-    { icon: "🛣", title: "Road Construction & Paving", desc: "High-durability road networks designed to withstand heavy industrial traffic and extreme weather conditions. Focus on long-term structural integrity.", details: ["Asphalt concrete binder and wearing course", "Pavement marking & signage", "Drainage integration", "Traffic management systems"] },
-    { icon: "🏗", title: "Commercial Structures", desc: "End-to-end construction of high-rise commercial buildings, industrial warehouses, and corporate facilities built to international standards.", details: ["Foundation engineering", "Structural steel framework", "MEP integration", "Project closeout & handover"] },
-    { icon: "🌉", title: "Bridge Engineering", desc: "Design and construction of robust bridges and overpasses, ensuring critical infrastructure connectivity over challenging terrains and waterways.", details: ["Pre-stressed concrete design", "Geotechnical investigation", "Load analysis & fatigue testing", "Expansion joint systems"] },
-    { icon: "⛏", title: "Earthworks & Excavation", desc: "Massive-scale land clearing, grading, and excavation utilizing our extensive fleet of heavy machinery to prepare sites for major developments.", details: ["Bulk earthworks", "Site leveling & compaction", "Dewatering systems", "Slope stabilization"] },
+    { key: "service-road", icon: "🛣", title: "Road Construction & Paving", desc: "High-durability road networks designed to withstand heavy industrial traffic and extreme weather conditions. Focus on long-term structural integrity.", details: ["Asphalt concrete binder and wearing course", "Pavement marking & signage", "Drainage integration", "Traffic management systems"] },
+    { key: "service-commercial", icon: "🏗", title: "Commercial Structures", desc: "End-to-end construction of high-rise commercial buildings, industrial warehouses, and corporate facilities built to international standards.", details: ["Foundation engineering", "Structural steel framework", "MEP integration", "Project closeout & handover"] },
+    { key: "service-bridge", icon: "🌉", title: "Bridge Engineering", desc: "Design and construction of robust bridges and overpasses, ensuring critical infrastructure connectivity over challenging terrains and waterways.", details: ["Pre-stressed concrete design", "Geotechnical investigation", "Load analysis & fatigue testing", "Expansion joint systems"] },
+    { key: "service-earthworks", icon: "⛏", title: "Earthworks & Excavation", desc: "Massive-scale land clearing, grading, and excavation utilizing our extensive fleet of heavy machinery to prepare sites for major developments.", details: ["Bulk earthworks", "Site leveling & compaction", "Dewatering systems", "Slope stabilization"] },
   ];
 
   const containerVariants = {
@@ -104,7 +104,7 @@ export const ServicesPage = ({ setPage }) => {
                             </div>
                           ))}
                         </div>
-                        <button className="btn-orange" style={{ marginTop: 20 }} onClick={() => setPage("service-detail")}>VIEW FULL SERVICE →</button>
+                        <button className="btn-orange" style={{ marginTop: 20 }} onClick={() => setPage(s.key)}>VIEW FULL SERVICE →</button>
                       </div>
                     </motion.div>
                   )}

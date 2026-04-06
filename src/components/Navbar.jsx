@@ -38,6 +38,12 @@ export const Navbar = ({ page, setPage, theme, setTheme }) => {
   const pageMap = { "Welcome": "home", "About Us": "about", "Services": "services", "Projects": "projects", "How It Works": "how-it-works", "Testimonials": "testimonials", "Contact": "contact" };
 
   const dropdowns = {
+    "Services": [
+      { label: "Road Construction & Paving", pageKey: "service-road" },
+      { label: "Commercial Structures", pageKey: "service-commercial" },
+      { label: "Bridge Engineering", pageKey: "service-bridge" },
+      { label: "Earthworks & Excavation", pageKey: "service-earthworks" }
+    ],
     "Projects": [
       { label: "Lagos-Ibadan Expressway Expansion", pageKey: "project-lagos" },
       { label: "Victoria Island Tech Hub", pageKey: "project-techhub" },
