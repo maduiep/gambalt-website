@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { Reveal } from "../components/Reveal";
-import serviceDetailHero from "../assets/images/service-detail-hero.png";
+import serviceRoadImg from "../assets/images/service_road_construction.png";
+import serviceBridgeImg from "../assets/images/service_bridge_construction.png";
+import serviceCommercialImg from "../assets/images/service_commercial_construction.png";
+import serviceEarthworksImg from "../assets/images/service_earthworks_excavation.png";
 
 export const ServiceDetailPage = ({ setPage, serviceKey }) => {
   const servicesData = {
@@ -31,7 +34,8 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
         ["Core Engineering", ["Asphalt concrete binder laying", "Wearing course application", "Reinforced drainage systems", "Culvert & bridge transition"]],
         ["Finalization", ["Pavement thermoplastic marking", "Safety signage & lighting", "Municipal sign-off", "Maintenance scheduling"]]
       ],
-      cta: "START YOUR HIGHWAY PROJECT WITH GAMBALT"
+      cta: "START YOUR HIGHWAY PROJECT WITH GAMBALT",
+      heroImg: serviceRoadImg
     },
     "service-commercial": {
       title: "Commercial Structures",
@@ -58,7 +62,8 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
         ["Superstructure", ["Reinforced concrete skeleton", "Structural steel framework", "Curtain wall & façade", "Lift & HVAC integration"]],
         ["Compliance", ["Fire safety engineering", "Occupancy certification", "Quality control reporting", "Handover package"]]
       ],
-      cta: "BUILD YOUR COMMERCIAL VISION WITH GAMBALT"
+      cta: "BUILD YOUR COMMERCIAL VISION WITH GAMBALT",
+      heroImg: serviceCommercialImg
     },
     "service-bridge": {
       title: "Bridge Engineering",
@@ -85,7 +90,8 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
         ["Span Engineering", ["Pre-stressed girder placement", "Concrete slab reinforcement", "Expansion joint installation", "Waterproofing"]],
         ["Testing", ["Static & dynamic load testing", "Thermal stress analysis", "Final inspection", "Operational sign-off"]]
       ],
-      cta: "ENGINEER YOUR CRITICAL SPAN WITH GAMBALT"
+      cta: "ENGINEER YOUR CRITICAL SPAN WITH GAMBALT",
+      heroImg: serviceBridgeImg
     },
     "service-earthworks": {
       title: "Earthworks & Excavation",
@@ -112,7 +118,8 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
         ["Precision Grading", ["Final surface leveling", "Compaction & stabilization", "Erosion control system", "Trenching works"]],
         ["Logistics", ["Fleet deployment & monitoring", "Fuel & safety coordination", "Site reporting", "Handover"]]
       ],
-      cta: "PREPARE YOUR SITE WITH GAMBALT'S FLEET"
+      cta: "PREPARE YOUR SITE WITH GAMBALT'S FLEET",
+      heroImg: serviceEarthworksImg
     }
   };
 
@@ -135,7 +142,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
   return (
     <div>
       {/* Hero Section */}
-      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url(${serviceDetailHero}) center/cover`, minHeight: 400, display: "flex", alignItems: "flex-end", paddingBottom: 48, paddingTop: 120 }} className="blur-in">
+      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url(${currentService.heroImg}) center/cover`, minHeight: 600, display: "flex", alignItems: "flex-end", paddingBottom: 80, paddingTop: 120 }} className="blur-in">
         <div className="container">
           <Reveal x={-20}>
             <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
@@ -207,32 +214,15 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
             </h2>
           </Reveal>
           
-          <div className="methodology-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 0, position: "relative" }}>
-            {/* Connection line for desktop */}
-            <div style={{ position: "absolute", top: 38, left: "10%", right: "10%", height: 1, background: BORDER, zIndex: 0 }} className="desktop-only" />
-            
+          <div className="methodology-timeline">
             {currentService.methodology.map((m, i) => (
               <Reveal key={m.step} delay={i * 0.1} y={20}>
-                <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "0 10px" }}>
-                  <div style={{ 
-                    width: 76, 
-                    height: 76, 
-                    borderRadius: "50%", 
-                    background: DARK, 
-                    border: `2px solid ${expanded !== -1 ? ORANGE : BORDER}`, // Dynamic style based on state if needed, but here fixed
-                    display: "flex", 
-                    alignItems: "center", 
-                    justifyContent: "center",
-                    margin: "0 auto 24px",
-                    fontWeight: 900,
-                    fontSize: 20,
-                    color: ORANGE,
-                    boxShadow: "0 0 20px rgba(232,84,26,0.15)"
-                  }}>
+                <div className="methodology-item">
+                  <div className="methodology-node">
                     {m.step}
                   </div>
-                  <h4 style={{ color: TEXT, fontSize: 15, fontWeight: 800, textTransform: "uppercase", marginBottom: 8 }}>{m.title}</h4>
-                  <p style={{ color: SUBTLE, fontSize: 11, lineHeight: 1.5 }}>{m.desc}</p>
+                  <h4 className="methodology-title">{m.title}</h4>
+                  <p className="methodology-desc">{m.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -277,7 +267,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
 
       {/* CTA Section */}
       <Reveal y={30}>
-        <div className="cta-section" style={{ background: `linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url(${serviceDetailHero}) center/cover fixed` }}>
+        <div className="cta-section" style={{ background: `linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url(${currentService.heroImg}) center/cover fixed` }}>
           <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 1, padding: "100px 0" }}>
             <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", marginBottom: 16 }}>{currentService.cta}</h2>
             <p style={{ color: SUBTLE, fontSize: 16, marginBottom: 40, maxWidth: 600, margin: "0 auto" }}>Partner with Gambalt for industrial-grade civil engineering results. Our fleet is ready, our engineers represent precision.</p>
