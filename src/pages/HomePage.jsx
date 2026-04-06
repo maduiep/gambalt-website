@@ -435,7 +435,7 @@ export const HomePage = ({ setPage }) => {
         <div className="cta-section">
           <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
             <h2 className="heading-font" style={{ fontSize: 52, fontWeight: 900, textTransform: "uppercase", marginBottom: 16 }}>READY TO BREAK GROUND?</h2>
-            <p style={{ fontSize: 16, opacity: 0.9, marginBottom: 36, maxWidth: 500, margin: "0 auto 36px" }}>
+            <p style={{ fontSize: 16, color: "#fff", marginBottom: 36, maxWidth: 500, margin: "0 auto 36px" }}>
               Our structural, transparent teams are ready for your next big project. Let's build together.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>

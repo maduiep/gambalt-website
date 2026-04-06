@@ -40,7 +40,7 @@ export const PageHero = ({ tag, title, accent, subtitle, img }) => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="hero-subtitle-fix"
-            style={{ fontSize: 16, maxWidth: 560, lineHeight: 1.6 }}
+            style={{ fontSize: 16, maxWidth: 560, lineHeight: 1.6, color: "rgba(255,255,255,0.8)" }}
           >
             {subtitle}
           </motion.p>
