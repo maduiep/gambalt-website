@@ -158,6 +158,11 @@ export const ProjectDetailPage = ({ setPage, projectKey }) => {
                     </div>
                   </div>
                 </div>
+
+                <div style={{ background: "rgba(255,102,0,0.05)", borderLeft: `4px solid ${ORANGE}`, padding: "24px 32px", marginBottom: 32 }}>
+                  <h5 className="heading-font" style={{ fontSize: 13, fontWeight: 700, color: TEXT, marginBottom: 8, textTransform: "uppercase" }}>Safety & Quality Assurance</h5>
+                  <p style={{ fontSize: 12, color: MUTED, lineHeight: 1.7 }}>This project was executed under industrial safety protocols with 100% compliance to World Bank and ISO infrastructure standards. All materials were vetted through third-party lab analysis before on-site deployment.</p>
+                </div>
               </Reveal>
 
               <Reveal x={-20}>

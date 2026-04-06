@@ -61,14 +61,20 @@ export const Footer = ({ setPage }) => {
           </motion.div>
           <motion.div variants={itemVariants}>
             <p className="heading-font" style={{ fontSize: 13, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 20, color: TEXT }}>Core Services</p>
-            {["Road Construction", "Commercial Structures", "Earthworks & Excavation", "Bridge Engineering", "Project Management"].map(s => (
+            {[
+              ["Road Construction", "service-road"],
+              ["Commercial Structures", "service-commercial"],
+              ["Earthworks & Excavation", "service-earthworks"],
+              ["Bridge Engineering", "service-bridge"],
+              ["Project Management", "service-management"]
+            ].map(([l, p]) => (
               <motion.p 
-                key={s} 
+                key={l} 
                 style={{ fontSize: 13, color: SUBTLE, marginBottom: 10, cursor: "pointer" }}
                 whileHover={{ x: 5, color: ORANGE }}
-                onClick={() => setPage("services")}
+                onClick={() => setPage(p)}
               >
-                › {s}
+                › {l}
               </motion.p>
             ))}
           </motion.div>
