@@ -17,11 +17,11 @@ export const ProjectsPage = ({ setPage }) => {
 
   const projects = [
     { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Lagos-Ibadan Expressway Section II", desc: "Major highway reconstruction spanning 45km, including heavy-duty asphalt paving and structural works.", img: imgLagosIbadan, tag: "Infrastructure / Roads", id: "project-lagos" },
-    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", desc: "A 12-story commercial complex featuring smart building management systems and green energy.", img: imgTechHub, tag: "Commercial", id: "project-detail" },
-    { cat: "DRAINAGE SYSTEMS", status: "COMPLETED 2022", title: "Lekki Peninsula Flood Control", desc: "Extensive underground drainage network covering 15 sq km to mitigate seasonal flooding.", img: imgFloodControl, tag: "Drainage Systems", id: "project-detail" },
-    { cat: "INSTITUTIONAL", status: "COMPLETED 2021", title: "Federal Medical Center Extension", desc: "Construction of a new 200-bed ward facility adhering strictly to WHO healthcare infrastructure standards.", img: imgMedicalCenter, tag: "Institutional", id: "project-detail" },
-    { cat: "RESIDENTIAL", status: "ONGOING", title: "Opal Luxury Estate", desc: "Development of 50 premium detached duplexes with complete internal road networks.", img: imgLuxuryEstate, tag: "Residential", id: "project-detail" },
-    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Interchange", desc: "Design and construction of a multi-level interchange to ease traffic congestion at major junction.", img: imgInterchange, tag: "Infrastructure / Roads", id: "project-detail" },
+    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", desc: "A 12-story commercial complex featuring smart building management systems and green energy.", img: imgTechHub, tag: "Commercial", id: "project-techhub" },
+    { cat: "DRAINAGE SYSTEMS", status: "COMPLETED 2022", title: "Lekki Peninsula Flood Control", desc: "Extensive underground drainage network covering 15 sq km to mitigate seasonal flooding.", img: imgFloodControl, tag: "Drainage Systems", id: "project-flood" },
+    { cat: "INSTITUTIONAL", status: "COMPLETED 2021", title: "Federal Medical Center Extension", desc: "Construction of a new 200-bed ward facility adhering strictly to WHO healthcare infrastructure standards.", img: imgMedicalCenter, tag: "Institutional", id: "project-medical" },
+    { cat: "RESIDENTIAL", status: "ONGOING", title: "Opal Luxury Estate", desc: "Development of 50 premium detached duplexes with complete internal road networks.", img: imgLuxuryEstate, tag: "Residential", id: "project-opal" },
+    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Interchange", desc: "Design and construction of a multi-level interchange to ease traffic congestion at major junction.", img: imgInterchange, tag: "Infrastructure / Roads", id: "project-interchange" },
   ];
 
   const visible = filter === "All Projects" ? projects : projects.filter(p => p.tag === filter);

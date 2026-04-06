@@ -30,8 +30,7 @@ export default function GambaltWebsite() {
           {page === "services" && <ServicesPage setPage={navigate} />}
           {page === "service-detail" && <ServiceDetailPage setPage={navigate} />}
           {page === "projects" && <ProjectsPage setPage={navigate} />}
-          {page === "project-lagos" && <ProjectDetailPage setPage={navigate} />}
-          {page === "project-detail" && <ProjectDetailPage setPage={navigate} />}
+          {page.startsWith("project-") && <ProjectDetailPage setPage={navigate} projectKey={page} />}
           {page === "how-it-works" && <HowItWorksPage setPage={navigate} />}
           {page === "testimonials" && <TestimonialsPage setPage={navigate} />}
           {page === "contact" && <ContactPage setPage={navigate} />}

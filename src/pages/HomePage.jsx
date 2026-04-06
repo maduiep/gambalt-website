@@ -24,9 +24,9 @@ export const HomePage = ({ setPage }) => {
 
   const projects = [
     { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Lagos-Ibadan Expressway Expansion", img: imgLagosIbadan, id: "project-lagos" },
-    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", img: imgTechHub, id: "project-detail" },
-    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Bridge Works", img: imgBridgeWorks, id: "project-detail" },
-    { cat: "COMMERCIAL", status: "ONGOING", title: "Ogun State Manufacturing Plant", img: imgManufacturing, id: "project-detail" },
+    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", img: imgTechHub, id: "project-techhub" },
+    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Bridge Works", img: imgBridgeWorks, id: "project-bridge" },
+    { cat: "COMMERCIAL", status: "ONGOING", title: "Ogun State Manufacturing Plant", img: imgManufacturing, id: "project-manufacturing" },
   ];
 
   const testimonials = [

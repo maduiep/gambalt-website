@@ -4,6 +4,9 @@ import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme
 import { Reveal } from "../components/Reveal";
 
 export const RequestQuotePage = ({ setPage }) => {
+  const [fileName, setFileName] = useState("");
+  const fileInputRef = useRef(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -167,13 +170,26 @@ export const RequestQuotePage = ({ setPage }) => {
                 <label className="form-label">Project Details *</label>
                 <textarea name="ProjectDetails" required className="form-textarea" placeholder="Tell us more about your project scope, location, and specific requirements..." />
               </div>
+              <input 
+                type="file" 
+                name="Document"
+                ref={fileInputRef} 
+                style={{ display: "none" }} 
+                onChange={(e) => setFileName(e.target.files[0]?.name || "")}
+                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+              />
               <motion.div 
                 style={{ border: `2px dashed ${BORDER}`, padding: 24, textAlign: "center", marginBottom: 20, cursor: "pointer" }}
                 whileHover={{ borderColor: ORANGE, backgroundColor: "rgba(255,102,0,0.02)" }}
+                onClick={() => fileInputRef.current?.click()}
               >
-                <div style={{ fontSize: 28, marginBottom: 8 }}>☁</div>
-                <p style={{ fontSize: 13, color: SUBTLE }}>Upload blueprints or RFP documents (Optional)</p>
-                <p style={{ fontSize: 11, color: MUTED }}>PDF, DOCX, JPG up to 10MB</p>
+                <div style={{ fontSize: 28, marginBottom: 8 }}>{fileName ? "📄" : "☁"}</div>
+                <p style={{ fontSize: 13, color: SUBTLE }}>
+                  {fileName ? fileName : "Upload blueprints or RFP documents (Optional)"}
+                </p>
+                <p style={{ fontSize: 11, color: MUTED }}>
+                  {fileName ? "Click to change file" : "PDF, DOCX, JPG up to 10MB"}
+                </p>
               </motion.div>
               <motion.button 
                 type="submit"

@@ -46,9 +46,9 @@ export const Navbar = ({ page, setPage, theme, setTheme }) => {
     ],
     "Projects": [
       { label: "Lagos-Ibadan Expressway Expansion", pageKey: "project-lagos" },
-      { label: "Victoria Island Tech Hub", pageKey: "project-detail" },
-      { label: "Ogun State Bridge Works", pageKey: "project-detail" },
-      { label: "Ogun State Manufacturing Plant", pageKey: "project-detail" }
+      { label: "Victoria Island Tech Hub", pageKey: "project-techhub" },
+      { label: "Ogun State Bridge Works", pageKey: "project-bridge" },
+      { label: "Ogun State Manufacturing Plant", pageKey: "project-manufacturing" }
     ]
   };
 
