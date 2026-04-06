@@ -139,7 +139,7 @@ export const ServicesPage = ({ setPage }) => {
               </div>
               <div className="form-group">
                 <label className="form-label" style={{ color: MUTED }}>Service Required</label>
-                <select className="form-select" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }}>
+                <select className="form-select" style={{ backgroundColor: BLACK, border: `1px solid ${BORDER}`, color: TEXT }}>
                   <option>Road Construction & Paving</option>
                   <option>Commercial Structures</option>
                   <option>Bridge Engineering</option>

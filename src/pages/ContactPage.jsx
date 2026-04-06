@@ -128,7 +128,7 @@ export const ContactPage = ({ setPage }) => {
                 </div>
                 <div className="form-group">
                   <label className="form-label" style={{ color: MUTED }}>Project Type *</label>
-                  <select name="ProjectType" required className="form-select" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }}>
+                  <select name="ProjectType" required className="form-select" style={{ backgroundColor: BLACK, border: `1px solid ${BORDER}`, color: TEXT }}>
                     <option value="">Select a project category</option>
                     <option>Road Construction</option>
                     <option>Commercial Structure</option>
