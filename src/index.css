@@ -444,7 +444,7 @@ body[data-theme='light'] {
   .about-image-wrapper {
     position: relative;
     padding: 24px;
-    background: #000;
+    background: #ffffff;
     display: inline-block;
   }
 

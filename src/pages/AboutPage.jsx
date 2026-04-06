@@ -4,7 +4,7 @@ import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
 import heroImg from "../assets/images/About Us Hero Image.png";
-import aboutUsImage from "../assets/images/about-workers-new.png";
+import aboutUsImage from "../assets/images/about-us-image.png";
 
 export const AboutPage = ({ setPage }) => {
   const values = [
@@ -82,10 +82,6 @@ export const AboutPage = ({ setPage }) => {
               <div className="about-image-wrapper">
                 <div className="about-accent-rect"></div>
                 <img src={aboutUsImage} alt="team" className="about-main-img" />
-                <div className="about-vendor-badge">
-                  <div className="about-vendor-title">GOVERNMENT</div>
-                  <div className="about-vendor-subtitle">READY VENDOR</div>
-                </div>
               </div>
             </Reveal>
           </div>
