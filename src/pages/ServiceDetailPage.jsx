@@ -8,83 +8,83 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
   const servicesData = {
     "service-road": {
       title: "Road Construction & Paving",
-      heroTitle: "CIVIL ENGINEERING",
-      heroAccent: "& INFRASTRUCTURE",
-      desc: "From heavy-duty asphalt laying to complex road network planning, Gambalt delivers end-to-end highway solutions.",
-      planningTitle: "Highway Assessment & Load Analysis",
-      planningDesc: "We conduct in-depth assessments with municipal planners on structural load parameters, load assessment, and environmental factors.",
+      heroTitle: "HIGH-DURABILITY",
+      heroAccent: "HIGHWAY NETWORKS",
+      desc: "Engineering high-traffic infrastructure with advanced asphalt binder courses, precision pavement marking, and integrated drainage solutions for industrial-scale load bearing.",
+      planningTitle: "Topographic & Traffic Load Engineering",
+      planningDesc: "Every project begins with comprehensive GIS mapping and geotechnical investigations to ensure subgrade stability and long-term structural integrity under extreme conditions.",
       metrics: [
-        ["Land area regularization improvement through adherence to force calibration", "60%"],
-        ["Market accessibility improvement for major transit hubs", "70%"],
-        ["Project turnaround efficiency on large-scale paving", "56.6%"],
-        ["Compliance with Ministry of Works engineering codes", "100%"]
+        ["Structural load capacity optimization against heavy industrial traffic", "98.5%"],
+        ["Asphalt concrete durability rating in extreme weather conditions", "92%"],
+        ["Project delivery efficiency through standardized civil workflows", "94.2%"],
+        ["Compliance with Federal Ministry of Works & Housing standards", "100%"]
       ],
       deliverables: [
-        ["Site Preparation", ["Clearing & grubbing", "Soil survey & testing", "Subgrade preparation", "Compaction equipment"]],
-        ["Construction", ["Asphalt mixing & laying", "Pavement marking", "Drainage channels", "Survey monitoring"]],
-        ["Quality & Compliance", ["Load & fatigue testing", "Regulatory sign-off", "Documentation", "Final handover"]]
+        ["Pre-Construction", ["Geotechnical soil testing", "Topographic site survey", "Environmental impact vetting", "Traffic management planning"]],
+        ["Core Engineering", ["Asphalt concrete binder laying", "Wearing course application", "Reinforced drainage systems", "Culvert & bridge transition"]],
+        ["Finalization", ["Pavement thermoplastic marking", "Safety signage & lighting", "Municipal sign-off", "Maintenance scheduling"]]
       ],
-      cta: "START YOUR ROAD PROJECT WITH GAMBALT"
+      cta: "START YOUR HIGHWAY PROJECT WITH GAMBALT"
     },
     "service-commercial": {
       title: "Commercial Structures",
-      heroTitle: "STRUCTURAL",
-      heroAccent: "& VERTICAL BUILDS",
-      desc: "Building high-rise corporate hubs, warehouses, and shopping complexes with international safety certifications.",
-      planningTitle: "Structural Integrity & Safety Vetting",
-      planningDesc: "Our architectural engineering team coordinates with urban planners to ensure vertical stability and MEP integration.",
+      heroTitle: "INDUSTRIAL &",
+      heroAccent: "VERTICAL BUILDS",
+      desc: "Designing and constructing massive commercial hubs, from specialized industrial warehouses to corporate high-rises, built for maximum structural safety and aesthetic impact.",
+      planningTitle: "Architectural & MEP Systems Integration",
+      planningDesc: "Our engineering team specializes in complex vertical development, ensuring seamless integration of structural steel, mechanical, electrical, and plumbing systems.",
       metrics: [
-        ["Structural safety compliance for high-occupancy builds", "100%"],
-        ["Energy efficiency optimization for corporate towers", "45%"],
-        ["Space utilization improvements in industrial warehouses", "82%"],
-        ["Project management scheduling accuracy", "94%"]
+        ["Structural safety & vertical expansion feasibility", "100%"],
+        ["Energy efficiency through specialized MEP optimization", "78%"],
+        ["Operational space utilization for industrial workflows", "95%"],
+        ["Zero-incident safety rating during build phase", "100%"]
       ],
       deliverables: [
-        ["Foundation", ["Deep piling works", "Reinforced concrete", "Structural steel", "Seismic analysis"]],
-        ["Building Lifecycle", ["MEP systems integration", "Vertical transport", "Interior fit-out", "Safety system installation"]],
-        ["Finalization", ["Fire safety certification", "HVAC optimization", "Occupancy walkthrough", "Handover"]]
+        ["Substructure", ["High-capacity piling works", "Raft & pad foundation", "Subsurface waterproofing", "Seismic analysis"]],
+        ["Superstructure", ["Reinforced concrete skeleton", "Structural steel framework", "Curtain wall & façade", "Lift & HVAC integration"]],
+        ["Compliance", ["Fire safety engineering", "Occupancy certification", "Quality control reporting", "Handover package"]]
       ],
-      cta: "START YOUR BUILDING PROJECT WITH GAMBALT"
+      cta: "BUILD YOUR COMMERCIAL VISION WITH GAMBALT"
     },
     "service-bridge": {
       title: "Bridge Engineering",
-      heroTitle: "BRIDGE",
-      heroAccent: "& SPAN SOLUTIONS",
-      desc: "Connecting communities with pre-stressed concrete overpasses and robust bridge designs built for the future.",
-      planningTitle: "Geotechnical & Hydraulic Analysis",
-      planningDesc: "Specialized load fatigue testing and geotechnical site surveys to ensure long-term structural viability over waterways.",
+      heroTitle: "PRECISION BRIDGE",
+      heroAccent: "& OVERPASS ENG.",
+      desc: "Delivering critical infrastructure connectivity through pre-stressed concrete bridge design, hydraulic load analysis, and seismic-resistant overpass solutions.",
+      planningTitle: "Hydraulic & Geotechnical Site Evaluation",
+      planningDesc: "Specialized analysis of waterway flow, soil load-bearing capacity, and structural fatigue to ensure centuries-long durability of bridge abutments and piers.",
       metrics: [
-        ["Structural load capacity optimization", "100%"],
-        ["Connectivity improvement for rural-to-urban transit", "65%"],
-        ["Material durability rating for river crossings", "98%"],
-        ["Environmental impact mitigation score", "88%"]
+        ["Structural resistance to environmental fatigue", "99.8%"],
+        ["Connectivity improvement for commercial transit links", "86%"],
+        ["Material durability for river-crossing spans", "96.5%"],
+        ["Environmental preservation during construction", "100%"]
       ],
       deliverables: [
-        ["Phase 1", ["Underwater foundation", "Abutment construction", "Pier installation", "Surveying"]],
-        ["Superstructure", ["Span placement", "Pre-stressed concrete", "Decking and asphalt", "Railing installation"]],
-        ["Verification", ["Load testing", "Thermal stress analysis", "Final sign-off", "Maintenance plan"]]
+        ["Foundation Phase", ["Underwater cofferdam works", "Abutment construction", "Deep pier installation", "Geological vetting"]],
+        ["Span Engineering", ["Pre-stressed girder placement", "Concrete slab reinforcement", "Expansion joint installation", "Waterproofing"]],
+        ["Testing", ["Static & dynamic load testing", "Thermal stress analysis", "Final inspection", "Operational sign-off"]]
       ],
-      cta: "START YOUR BRIDGE PROJECT WITH GAMBALT"
+      cta: "ENGINEER YOUR CRITICAL SPAN WITH GAMBALT"
     },
     "service-earthworks": {
       title: "Earthworks & Excavation",
       heroTitle: "MASSIVE-SCALE",
       heroAccent: "& SITE PREPARATION",
-      desc: "Utilizing our heavy machinery fleet for bulk excavation, site leveling, and land clearing operations.",
-      planningTitle: "Fleet Logistics & Mass Grading",
-      planningDesc: "Precision grading and earth moving with industrial-scale machinery for mining or infrastructure preparation.",
+      desc: "Utilizing modern heavy machinery for large-scale land clearing, bulk excavation, and precision site grading for major infrastructure and mining sectors.",
+      planningTitle: "Fleet Logistics & Geological Stability",
+      planningDesc: "Comprehensive site preparation utilizing our multi-ton equipment fleet, managed through GIS precision to ensure perfect grading and slope stabilization.",
       metrics: [
-        ["Excavation accuracy within design tolerances", "99%"],
-        ["Fleet deployment speed for rapid site clearing", "75%"],
-        ["Land reclamation and soil stability scores", "92%"],
-        ["Compliance with environmental disturbance codes", "100%"]
+        ["Grading accuracy within millimetric design tolerances", "99.5%"],
+        ["Earthmoving volume capacity per operational cycle", "88%"],
+        ["Soil stability & compaction compliance rating", "97%"],
+        ["Environmental reclamation & remediation status", "100%"]
       ],
       deliverables: [
-        ["Land Clearing", ["Tree & debris removal", "Demolition works", "Waste processing", "GIS mapping"]],
-        ["Earthmoving", ["Bulk excavation", "Precision grading", "Trenching works", "Compaction"]],
-        ["Logistics", ["Heavy equipment mobilization", "Fuel management", "Safety supervisor", "Site reporting"]]
+        ["Site Clearing", ["Deformation & clearing", "Bulk earthmoving", "Demolition & waste removal", "Geological mapping"]],
+        ["Precision Grading", ["Final surface leveling", "Compaction & stabilization", "Erosion control system", "Trenching works"]],
+        ["Logistics", ["Fleet deployment & monitoring", "Fuel & safety coordination", "Site reporting", "Handover"]]
       ],
-      cta: "START YOUR EARTHWORKS PROJECT WITH GAMBALT"
+      cta: "PREPARE YOUR SITE WITH GAMBALT'S FLEET"
     }
   };
 
