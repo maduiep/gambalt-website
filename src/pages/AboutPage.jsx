@@ -16,7 +16,7 @@ export const AboutPage = ({ setPage }) => {
   const team = [
     { name: "Engr. Samuel Bjo", role: "Managing Director", img: "https://images.unsplash.com/photo-1586232902955-df204f34b36e?w=400&h=400&fit=crop&crop=faces&q=80", desc: "15+ years experience in large-scale civil works and infrastructure engineering since arrival." },
     { name: "Aisha Mohammed", role: "Chief Operations Officer", img: "https://images.unsplash.com/photo-1642929392581-e7abec90b81c?w=400&h=400&fit=crop&crop=faces&q=80", desc: "Responsible for heavy machinery logistics, site operations, and management of project portfolios." },
-    { name: "Engr. David Nwachukwu", role: "Head of Safety & Compliance", img: "https://images.unsplash.com/photo-1547218993-d50a84cd6a73?w=400&h=400&fit=crop&crop=faces&q=80", desc: "Ensures all project documentation meets government regulations and ISO standards company-wide." },
+    { name: "Engr. David Nwachukwu", role: "Head of Safety & Compliance", img: "https://images.unsplash.com/photo-1611548224781-4f01b7120567?w=400&h=400&fit=crop&crop=faces&q=80", desc: "Ensures all project documentation meets government regulations and ISO standards company-wide." },
   ];
 
   const containerVariants = {
