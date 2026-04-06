@@ -8,6 +8,13 @@ export const TestimonialsPage = ({ setPage }) => {
   const [filter, setFilter] = useState("All Clients");
   const filters = ["All Clients", "Government", "Commercial Developer", "Private Owner"];
 
+  const [displayLimit, setDisplayLimit] = useState(6);
+
+  // Reset display limit when filter changes
+  useEffect(() => {
+    setDisplayLimit(6);
+  }, [filter]);
+
   const testimonials = [
     { cat: "Government", name: "Chief Engineer Adeyemi", role: "Ministry of Works & Infrastructure", text: "Gambalt's approach to the state highway expansion was exemplary. Their rigorous adherence to safety protocols and transparent communication throughout the delays caused by weather ensured we stayed within budget. Highly recommended for public works." },
     { cat: "Commercial Developer", name: "Sarah Johnson", role: "Director, Hencel Developments", text: "Delivering a 15-story commercial complex in Victoria Island comes with immense logistical challenges. Gambalt's technical planning phase mitigated structural risks early on. Their on-site execution team was proactive, solving problems before they impacted the timeline." },
@@ -15,9 +22,15 @@ export const TestimonialsPage = ({ setPage }) => {
     { cat: "Commercial Developer", name: "Marcus Bello", role: "BT Engineering, Apex Structures", text: "The level of detail in their preliminary engineering assessment saved us millions. They identified a soil instability issue that two previous firms missed. Gambalt doesn't just build; they engineer solutions." },
     { cat: "Government", name: "Engr. Fatima Yusuf", role: "Municipal Planning Board", text: "For municipal drainage systems, precision is non-negotiable. Gambalt delivered the Phase 2 network exactly to spec. Their site supervisors are some of the most disciplined professionals I've encountered in the sector." },
     { cat: "Private Owner", name: "Emmanuel Peters", role: "Operations Director, SteelWorks Inc.", text: "Safety was our primary concern for the heavy manufacturing plant expansion. Gambalt's zero-incident record on our site speaks volumes about their operational standards. They are true partners in infrastructure." },
+    { cat: "Government", name: "Engr. Abubakar Musa", role: "Federal Ministry of Transport", text: "Gambalt's execution of the inter-state bridge reinforcement project was flawless. Their commitment to structural integrity sets them completely apart from other contractors." },
+    { cat: "Commercial Developer", name: "Chika Nwosu", role: "Skyline Developments", text: "Their heavy machinery fleet is unmatched. Having direct access to their own equipment meant zero third-party rental delays on our high-rise project." },
+    { cat: "Private Owner", name: "Hassan Ibrahim", role: "Greenfield Estates", text: "From complex soil stabilization to the final pour, Gambalt's engineering team operated with pinpoint accuracy and professionalism." },
+    { cat: "Commercial Developer", name: "Tolu Olatunji", role: "Retail Plaza Corp", text: "We experienced a major design pivot mid-project, and Gambalt's agile engineering team adapted instantly without compromising our grand opening timeline." },
   ];
 
-  const visible = filter === "All Clients" ? testimonials : testimonials.filter(t => t.cat === filter);
+  const filtered = filter === "All Clients" ? testimonials : testimonials.filter(t => t.cat === filter);
+  const visible = filtered.slice(0, displayLimit);
+  const hasMore = visible.length < filtered.length;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -94,17 +107,20 @@ export const TestimonialsPage = ({ setPage }) => {
             </AnimatePresence>
           </motion.div>
           
-          <Reveal y={20} delay={0.4}>
-            <div style={{ textAlign: "center", marginTop: 40 }}>
-              <motion.button 
-                className="btn-outline"
-                whileHover={{ scale: 1.05, borderColor: ORANGE, color: ORANGE }}
-                whileTap={{ scale: 0.95 }}
-              >
-                LOAD MORE REVIEWS
-              </motion.button>
-            </div>
-          </Reveal>
+          {hasMore && (
+            <Reveal y={20} delay={0.4}>
+              <div style={{ textAlign: "center", marginTop: 40 }}>
+                <motion.button 
+                  className="btn-outline"
+                  onClick={() => setDisplayLimit(prev => prev + 4)}
+                  whileHover={{ scale: 1.05, borderColor: ORANGE, color: ORANGE }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  LOAD MORE REVIEWS
+                </motion.button>
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 
