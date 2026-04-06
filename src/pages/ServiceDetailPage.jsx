@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { Reveal } from "../components/Reveal";
-import serviceRoadImg from "../assets/images/service_road_construction.png";
-import serviceBridgeImg from "../assets/images/service_bridge_construction.png";
-import serviceCommercialImg from "../assets/images/service_commercial_construction.png";
-import serviceEarthworksImg from "../assets/images/service_earthworks_excavation.png";
+import serviceDetailHero from "../assets/images/service-detail-hero.png";
+
+// FALLBACK IMAGES (User must move generated assets to src/assets/images/ to enable)
+const serviceRoadImg = serviceDetailHero;
+const serviceBridgeImg = serviceDetailHero;
+const serviceCommercialImg = serviceDetailHero;
+const serviceEarthworksImg = serviceDetailHero;
 
 export const ServiceDetailPage = ({ setPage, serviceKey }) => {
   const servicesData = {
@@ -32,7 +35,8 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
       deliverables: [
         ["Pre-Construction", ["Geotechnical soil testing", "Topographic site survey", "Environmental impact vetting", "Traffic management planning"]],
         ["Core Engineering", ["Asphalt concrete binder laying", "Wearing course application", "Reinforced drainage systems", "Culvert & bridge transition"]],
-        ["Finalization", ["Pavement thermoplastic marking", "Safety signage & lighting", "Municipal sign-off", "Maintenance scheduling"]]
+        ["Technical Specs", ["ISO-compliant safety signage", "Thermoplastic marking", "Retro-reflective signage", "Vibration analysis"]],
+        ["Finalization", ["Municipal sign-off", "Maintenance scheduling", "Drainage inspection", "Surface-leveling audit"]]
       ],
       cta: "START YOUR HIGHWAY PROJECT WITH GAMBALT",
       heroImg: serviceRoadImg
@@ -60,6 +64,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
       deliverables: [
         ["Substructure", ["High-capacity piling works", "Raft & pad foundation", "Subsurface waterproofing", "Seismic analysis"]],
         ["Superstructure", ["Reinforced concrete skeleton", "Structural steel framework", "Curtain wall & façade", "Lift & HVAC integration"]],
+        ["Infrastructure", ["Electrical sub-station build", "Industrial wastewater treatment", "Back-up power grid", "Smart access control"]],
         ["Compliance", ["Fire safety engineering", "Occupancy certification", "Quality control reporting", "Handover package"]]
       ],
       cta: "BUILD YOUR COMMERCIAL VISION WITH GAMBALT",
@@ -88,6 +93,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
       deliverables: [
         ["Foundation Phase", ["Underwater cofferdam works", "Abutment construction", "Deep pier installation", "Geological vetting"]],
         ["Span Engineering", ["Pre-stressed girder placement", "Concrete slab reinforcement", "Expansion joint installation", "Waterproofing"]],
+        ["Hydraulic Works", ["Waterway flow analysis", "Scour protection systems", "Channel dredging", "Environmental monitors"]],
         ["Testing", ["Static & dynamic load testing", "Thermal stress analysis", "Final inspection", "Operational sign-off"]]
       ],
       cta: "ENGINEER YOUR CRITICAL SPAN WITH GAMBALT",
@@ -116,15 +122,47 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
       deliverables: [
         ["Site Clearing", ["Deformation & clearing", "Bulk earthmoving", "Demolition & waste removal", "Geological mapping"]],
         ["Precision Grading", ["Final surface leveling", "Compaction & stabilization", "Erosion control system", "Trenching works"]],
+        ["Safety Systems", ["Soil erosion monitoring", "Drainage channel build", "Retention basin creation", "Dust control measures"]],
         ["Logistics", ["Fleet deployment & monitoring", "Fuel & safety coordination", "Site reporting", "Handover"]]
       ],
       cta: "PREPARE YOUR SITE WITH GAMBALT'S FLEET",
       heroImg: serviceEarthworksImg
+    },
+    "service-management": {
+      title: "Project Management",
+      heroTitle: "FULL SPECTRUM",
+      heroAccent: "CONSTRUCTION MGMT",
+      desc: "Overseeing the technical and logistical lifecycle of massive civil builds, ensuring every stage meets regulatory standards, budget constraints, and industrial quality benchmarks.",
+      planningTitle: "Integrated Resource & Risk Orchestration",
+      planningDesc: "Our project managers utilize BIM and advanced scheduling to minimize downtime and maximize productivity across multi-stakeholder construction environments.",
+      metrics: [
+        ["Project delivery timeline adherence vs projected budget", "96.5%"],
+        ["Supply chain efficiency & material procurement speed", "84%"],
+        ["Stakeholder communication & reporting transparency", "100%"],
+        ["Risk mitigation & safety compliance benchmarks", "98%"]
+      ],
+      methodology: [
+        { step: "01", title: "Chartering", desc: "Project scope definition and strategic stakeholder alignment." },
+        { step: "02", title: "Procurement", desc: "Global supply chain logistics and material vetting." },
+        { step: "03", title: "Execution", desc: "On-site resource orchestration and tactical oversite." },
+        { step: "04", title: "Quality Audit", desc: "Rigorous ISO-standard engineering and safety vetting." },
+        { step: "05", title: "Commissioning", desc: "Final handover, certification, and post-build support." }
+      ],
+      deliverables: [
+        ["Phase Planning", ["WBS & schedule development", "Risk management matrix", "Budgeting and cash flow", "Stakeholder map"]],
+        ["Logistics", ["Vendor & subcontractor mgmt", "On-site material tracking", "Equipment fleet deployment", "Safety coordination"]],
+        ["Reporting", ["Real-time digital build tracking", "Executive summary dashboards", "Compliance documentation", "Incident reporting"]],
+        ["Closeout", ["Final site certification", "Equipment decommissioning", "Maintenance manuals", "Financial auditing"]]
+      ],
+      cta: "MANAGE YOUR BUILD WITH GAMBALT EXPERTISE",
+      heroImg: serviceDetailHero
     }
   };
 
   // Default to road construction if key not found (fallback)
   const currentService = servicesData[serviceKey] || servicesData["service-road"];
+
+  const deliverablesRef = useRef(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -158,7 +196,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
             <p style={{ marginTop: 16, fontSize: 15, color: "#ccc", maxWidth: 500 }}>{currentService.desc}</p>
             <div style={{ display: "flex", gap: 16, marginTop: 28, flexWrap: "wrap" }}>
               <button className="btn-orange" onClick={() => setPage("quote")}>REQUEST A CONSULTATION</button>
-              <button className="btn-outline">VIEW DELIVERABLES</button>
+              <button className="btn-outline" onClick={() => deliverablesRef.current?.scrollIntoView({ behavior: 'smooth' })}>VIEW DELIVERABLES</button>
             </div>
           </Reveal>
         </div>
@@ -231,7 +269,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
       </section>
 
       {/* Scope Section */}
-      <section className="section" style={{ background: DARK }}>
+      <section className="section" style={{ background: DARK }} ref={deliverablesRef}>
         <div className="container">
           <Reveal x={-20}>
             <div className="section-tag">SCOPE & DELIVERABLES</div>
@@ -243,8 +281,8 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
             <p style={{ color: SUBTLE, marginBottom: 48, maxWidth: 600 }}>A detailed technical overview of our {currentService.title.toLowerCase()} operational milestones and deliverables.</p>
           </Reveal>
           <motion.div 
-            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} 
-            className="grid-3"
+            style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }} 
+            className="grid-2-tp-1"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

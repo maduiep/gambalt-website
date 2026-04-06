@@ -42,7 +42,8 @@ export const Navbar = ({ page, setPage, theme, setTheme }) => {
       { label: "Road Construction & Paving", pageKey: "service-road" },
       { label: "Commercial Structures", pageKey: "service-commercial" },
       { label: "Bridge Engineering", pageKey: "service-bridge" },
-      { label: "Earthworks & Excavation", pageKey: "service-earthworks" }
+      { label: "Earthworks & Excavation", pageKey: "service-earthworks" },
+      { label: "Project Management", pageKey: "service-management" }
     ],
     "Projects": [
       { label: "Lagos-Ibadan Expressway Expansion", pageKey: "project-lagos" },

@@ -12,6 +12,7 @@ export const ServicesPage = ({ setPage }) => {
     { key: "service-commercial", icon: "🏗", title: "Commercial Structures", desc: "Sophisticated vertical development for corporate headquarters, high-capacity warehouses, and industrial complexes, ensuring structural integrity and MEP compliance.", details: ["Foundation engineering", "Structural steel framework", "MEP integration", "Project closeout & handover"] },
     { key: "service-bridge", icon: "🌉", title: "Bridge Engineering", desc: "Precision-engineered span solutions using pre-stressed concrete and seismic-resistant abutments to deliver critical connectivity across water and complex terrain.", details: ["Pre-stressed concrete design", "Geotechnical investigation", "Load analysis & fatigue testing", "Expansion joint systems"] },
     { key: "service-earthworks", icon: "⛏", title: "Earthworks & Excavation", desc: "Industrial-scale land clearing, bulk excavation, and GIS-mapped precision grading facilitated by our robust fleet of multi-ton heavy machinery.", details: ["Bulk earthworks", "Site leveling & compaction", "Dewatering systems", "Slope stabilization"] },
+    { key: "service-management", icon: "📋", title: "Project Management", desc: "End-to-end oversight of complex industrial builds, utilizing BIM and advanced logistics to ensure on-time, on-budget delivery of critical infrastructure.", details: ["Resource orchestration", "Risk mitigation & safety", "Budget & timeline control", "Stakeholder communications"] },
   ];
 
   const containerVariants = {
