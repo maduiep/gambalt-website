@@ -79,30 +79,62 @@ export const RequestQuotePage = ({ setPage }) => {
           </div>
 
           <Reveal y={30} delay={0.2}>
-            <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 36 }}>
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              // Combine First and Last name into Name for the sheet
+              const firstName = formData.get("FirstName");
+              const lastName = formData.get("LastName");
+              formData.delete("FirstName");
+              formData.delete("LastName");
+              formData.append("Name", `${firstName} ${lastName}`.trim());
+              formData.append("FormSource", "Request a Quote");
+
+              const btn = e.target.querySelector('button[type="submit"]');
+              const origText = btn.innerText;
+              btn.innerText = "SUBMITTING...";
+              btn.disabled = true;
+
+              try {
+                await fetch("https://script.google.com/macros/s/AKfycbxJ9ndRcIrMdXK6MCNv-R97CPjdSmBkbJzISSvbUXobZwSgnWOp2gI5HNG3Sin4edEx/exec", {
+                  method: "POST",
+                  body: formData,
+                  mode: "no-cors"
+                });
+                setPage("thank-you");
+              } catch (err) {
+                console.error(err);
+                alert("Failed to deliver message. Please try again.");
+              } finally {
+                if(btn) {
+                  btn.innerText = origText;
+                  btn.disabled = false;
+                }
+              }
+            }} style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 36 }}>
               <h3 className="heading-font" style={{ fontSize: 20, fontWeight: 700, textTransform: "uppercase", color: TEXT, marginBottom: 6 }}>PROJECT DETAILS FORM</h3>
               <p style={{ fontSize: 12, color: SUBTLE, marginBottom: 24 }}>Please fill out all required fields marked with an asterisk (*).</p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="grid-2">
                 <div className="form-group">
                   <label className="form-label">First name *</label>
-                  <input className="form-input" placeholder="John" />
+                  <input name="FirstName" required className="form-input" placeholder="John" />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Last name *</label>
-                  <input className="form-input" placeholder="Doe" />
+                  <input name="LastName" required className="form-input" placeholder="Doe" />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Email address *</label>
-                  <input className="form-input" placeholder="john.doe@company.com" />
+                  <input type="email" name="Email" required className="form-input" placeholder="john.doe@company.com" />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Phone number *</label>
-                  <input className="form-input" placeholder="+234 800 000 0000" />
+                  <input name="Phone" required className="form-input" placeholder="+234 800 000 0000" />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Project Type *</label>
-                  <select className="form-select">
-                    <option>Select category</option>
+                  <select name="ProjectType" required className="form-select">
+                    <option value="">Select category</option>
                     <option>Road Construction</option>
                     <option>Commercial</option>
                     <option>Bridge Engineering</option>
@@ -112,8 +144,8 @@ export const RequestQuotePage = ({ setPage }) => {
                 </div>
                 <div className="form-group">
                   <label className="form-label">Estimated Budget *</label>
-                  <select className="form-select">
-                    <option>Select budget range</option>
+                  <select name="Budget" required className="form-select">
+                    <option value="">Select budget range</option>
                     <option>₦10M – ₦50M</option>
                     <option>₦50M – ₦200M</option>
                     <option>₦200M – ₦1B</option>
@@ -123,8 +155,8 @@ export const RequestQuotePage = ({ setPage }) => {
               </div>
               <div className="form-group">
                 <label className="form-label">Project Timeline *</label>
-                <select className="form-select">
-                  <option>When do you plan to start?</option>
+                <select name="Timeline" required className="form-select">
+                  <option value="">When do you plan to start?</option>
                   <option>Immediately</option>
                   <option>Within 3 months</option>
                   <option>Within 6 months</option>
@@ -133,7 +165,7 @@ export const RequestQuotePage = ({ setPage }) => {
               </div>
               <div className="form-group">
                 <label className="form-label">Project Details *</label>
-                <textarea className="form-textarea" placeholder="Tell us more about your project scope, location, and specific requirements..." />
+                <textarea name="ProjectDetails" required className="form-textarea" placeholder="Tell us more about your project scope, location, and specific requirements..." />
               </div>
               <motion.div 
                 style={{ border: `2px dashed ${BORDER}`, padding: 24, textAlign: "center", marginBottom: 20, cursor: "pointer" }}
@@ -144,16 +176,16 @@ export const RequestQuotePage = ({ setPage }) => {
                 <p style={{ fontSize: 11, color: MUTED }}>PDF, DOCX, JPG up to 10MB</p>
               </motion.div>
               <motion.button 
+                type="submit"
                 className="btn-orange" 
                 style={{ width: "100%", padding: 16, fontSize: 15 }} 
-                onClick={() => setPage("thank-you")}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
               >
                 SUBMIT QUOTE REQUEST
               </motion.button>
               <p style={{ fontSize: 11, color: MUTED, textAlign: "center", marginTop: 12 }}>By submitting this form, you agree to our privacy policy and terms of service.</p>
-            </div>
+            </form>
           </Reveal>
         </div>
       </div>

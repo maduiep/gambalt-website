@@ -82,27 +82,53 @@ export const ContactPage = ({ setPage }) => {
             </div>
 
             <Reveal y={30} delay={0.2}>
-              <div style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 36 }}>
+              <form onSubmit={async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                formData.append("FormSource", "Contact Us");
+                
+                const btn = e.target.querySelector('button[type="submit"]');
+                const origText = btn.innerText;
+                btn.innerText = "SENDING...";
+                btn.disabled = true;
+
+                try {
+                  await fetch("https://script.google.com/macros/s/AKfycbxJ9ndRcIrMdXK6MCNv-R97CPjdSmBkbJzISSvbUXobZwSgnWOp2gI5HNG3Sin4edEx/exec", {
+                    method: "POST",
+                    body: formData,
+                    mode: "no-cors"
+                  });
+                  setPage("thank-you");
+                } catch (err) {
+                  console.error(err);
+                  alert("Failed to deliver message. Please try again.");
+                } finally {
+                  if(btn) {
+                    btn.innerText = origText;
+                    btn.disabled = false;
+                  }
+                }
+              }} style={{ background: CARD, border: `1px solid ${BORDER}`, padding: 36 }}>
                 <h3 className="heading-font" style={{ fontSize: 24, fontWeight: 800, textTransform: "uppercase", marginBottom: 8, color: TEXT }}>REQUEST A CONSULTATION</h3>
                 <p style={{ fontSize: 13, color: SUBTLE, marginBottom: 28 }}>Fill out the form below and our engineering team will get back to you within 24 hours.</p>
                 <div className="form-group">
                   <label className="form-label" style={{ color: MUTED }}>Full Name *</label>
-                  <input className="form-input" placeholder="John Doe" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
+                  <input name="Name" required className="form-input" placeholder="John Doe" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="grid-2">
                   <div className="form-group">
                     <label className="form-label" style={{ color: MUTED }}>Phone Number *</label>
-                    <input className="form-input" placeholder="+234 800 000 0000" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
+                    <input name="Phone" required className="form-input" placeholder="+234 800 000 0000" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
                   </div>
                   <div className="form-group">
                     <label className="form-label" style={{ color: MUTED }}>Email Address *</label>
-                    <input className="form-input" placeholder="john@company.com" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
+                    <input type="email" name="Email" required className="form-input" placeholder="john@company.com" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
                   </div>
                 </div>
                 <div className="form-group">
                   <label className="form-label" style={{ color: MUTED }}>Project Type *</label>
-                  <select className="form-select" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }}>
-                    <option>Select a project category</option>
+                  <select name="ProjectType" required className="form-select" style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }}>
+                    <option value="">Select a project category</option>
                     <option>Road Construction</option>
                     <option>Commercial Structure</option>
                     <option>Bridge Engineering</option>
@@ -112,18 +138,18 @@ export const ContactPage = ({ setPage }) => {
                 </div>
                 <div className="form-group">
                   <label className="form-label" style={{ color: MUTED }}>Project Details *</label>
-                  <textarea className="form-textarea" placeholder="Briefly describe your project requirements, timeline, and any specific engineering challenges..." style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
+                  <textarea name="ProjectDetails" required className="form-textarea" placeholder="Briefly describe your project requirements, timeline, and any specific engineering challenges..." style={{ background: BLACK, border: `1px solid ${BORDER}`, color: TEXT }} />
                 </div>
                 <motion.button 
+                  type="submit"
                   className="btn-orange" 
                   style={{ width: "100%", padding: 16, fontSize: 15 }} 
-                  onClick={() => setPage("thank-you")}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
                   SEND MESSAGE
                 </motion.button>
-              </div>
+              </form>
             </Reveal>
           </div>
         </div>
