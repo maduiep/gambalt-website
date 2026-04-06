@@ -4,6 +4,7 @@ import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
 import heroImg from "../assets/images/About Us Hero Image.png";
+import aboutUsImage from "../assets/images/about-us-image.png";
 
 export const AboutPage = ({ setPage }) => {
   const values = [
@@ -78,7 +79,10 @@ export const AboutPage = ({ setPage }) => {
               </motion.div>
             </div>
             <Reveal scale={0.95} delay={0.3}>
-              <img src="https://images.unsplash.com/photo-1581094488379-6a10d4e6f5f3?w=700&q=80" alt="team" style={{ width: "100%", height: 400, objectFit: "cover" }} />
+              <div className="about-image-wrapper">
+                <div className="about-accent-rect"></div>
+                <img src={aboutUsImage} alt="team" className="about-main-img" />
+              </div>
             </Reveal>
           </div>
         </div>

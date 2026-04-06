@@ -440,8 +440,8 @@ body[data-theme='light'] {
      ============================================= */
   .about-image-wrapper {
     position: relative;
-    padding-left: 28px;
-    padding-top: 28px;
+    padding-left: 32px;
+    padding-top: 32px;
   }
 
   .about-accent-rect {
@@ -450,12 +450,12 @@ body[data-theme='light'] {
     left: 0;
     width: 140px;
     height: 160px;
-    background: rgba(232, 140, 100, 0.3);
+    background: #ffffff;
     z-index: 0;
   }
 
   body[data-theme='light'] .about-accent-rect {
-    background: rgba(232, 160, 130, 0.35);
+    background: #ffffff;
   }
 
   .about-main-img {
