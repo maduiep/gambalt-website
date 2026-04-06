@@ -96,7 +96,7 @@ export const RequestQuotePage = ({ setPage }) => {
               btn.disabled = true;
 
               try {
-                await fetch("https://script.google.com/macros/s/AKfycbxJ9ndRcIrMdXK6MCNv-R97CPjdSmBkbJzISSvbUXobZwSgnWOp2gI5HNG3Sin4edEx/exec", {
+                await fetch(import.meta.env.VITE_GOOGLE_WEBHOOK_URL, {
                   method: "POST",
                   body: formData,
                   mode: "no-cors"
