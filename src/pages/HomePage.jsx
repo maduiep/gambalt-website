@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { Reveal } from "../components/Reveal";
+import aboutWorkersImg from "../assets/images/about-workers.jpg";
 
 export const HomePage = ({ setPage }) => {
   const stats = [{ n: "15+", l: "Years Experience" }, { n: "250+", l: "Projects Completed" }, { n: "50+", l: "Active Projects" }, { n: "100%", l: "Safety Record" }];
@@ -95,22 +96,54 @@ export const HomePage = ({ setPage }) => {
       </div>
 
       {/* About snippet */}
-      <section style={{ background: DARK, padding: "80px 0" }}>
+      <section className="about-section" style={{ background: DARK, padding: "100px 0" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="grid-2">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="grid-2">
+            {/* Left: Image with decorative elements */}
             <Reveal scale={0.95}>
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="construction" style={{ width: "100%", height: 380, objectFit: "cover" }} />
+              <div className="about-image-wrapper">
+                {/* Decorative accent rectangle */}
+                <div className="about-accent-rect" />
+                {/* Main image */}
+                <img
+                  src={aboutWorkersImg}
+                  alt="Gambalt construction workers reviewing project blueprints"
+                  className="about-main-img"
+                />
+                {/* Government Ready Vendor badge */}
+                <motion.div
+                  className="about-vendor-badge"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="heading-font about-vendor-title">GOVERNMENT</div>
+                  <div className="about-vendor-subtitle">READY VENDOR</div>
+                </motion.div>
+              </div>
             </Reveal>
+
+            {/* Right: Content */}
             <div>
               <Reveal x={30}>
-                <div className="section-tag">ABOUT GAMBALT</div>
-                <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, lineHeight: 1, textTransform: "uppercase", marginBottom: 24, color: TEXT }}>
-                  WE DELIVER INDUSTRIAL STRENGTH <span style={{ color: ORANGE }}>INFRASTRUCTURE</span>
+                <div className="about-tag-wrapper">
+                  <span className="about-tag-line" />
+                  <span className="section-tag" style={{ marginBottom: 0 }}>ABOUT GAMBALT</span>
+                </div>
+                <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, lineHeight: 1.05, textTransform: "uppercase", marginBottom: 28, color: TEXT }}>
+                  WE DELIVER INDUSTRIAL STRENGTH<br />
+                  <span style={{ color: ORANGE, fontStyle: "italic" }}>INFRASTRUCTURE</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.2} y={20}>
-                <p style={{ fontSize: 15, color: SUBTLE, lineHeight: 1.7, marginBottom: 20 }}>
-                  From the Lagos-Ibadan Expressway to the Lekki Peninsula flood control network, our portfolio demonstrates our capacity to handle large-scale, complex engineering projects on time and within budget.
+                <p style={{ fontSize: 15, color: SUBTLE, lineHeight: 1.75, marginBottom: 24 }}>
+                  Gambalt is not just another consultancy. We are hands-on builders, deeply rooted in the Nigerian landscape. Our project-delivery focus ensures that from initial survey to final concrete pour, your infrastructure stands the test of time.
+                </p>
+              </Reveal>
+              <Reveal delay={0.3} y={20}>
+                <p style={{ fontSize: 15, color: SUBTLE, lineHeight: 1.75, marginBottom: 32 }}>
+                  With a fleet of modern machinery and a team of seasoned civil engineers, we tackle complex structural challenges with industrial precision and unwavering commitment to safety.
                 </p>
               </Reveal>
               <motion.div
@@ -118,20 +151,19 @@ export const HomePage = ({ setPage }) => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
+                style={{ marginBottom: 36 }}
               >
-                {["End-to-end project management", "Heavy machinery deployment", "Strict adherence to national safety standards"].map((p, i) => (
-                  <motion.div key={p} variants={itemVariants} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                    <div style={{ width: 20, height: 20, background: ORANGE, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff", flexShrink: 0 }}>✓</div>
-                    <span style={{ fontSize: 14, color: MUTED }}>{p}</span>
+                {["End-to-end project management", "Heavy machinery deployment", "Strict adherence to national safety codes"].map((p, i) => (
+                  <motion.div key={p} variants={itemVariants} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+                      <path d="M3 9.5L7 13.5L15 4.5" stroke="#E8541A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span style={{ fontSize: 15, fontWeight: 600, color: TEXT }}>{p}</span>
                   </motion.div>
                 ))}
               </motion.div>
               <Reveal delay={0.5} y={10}>
-                <div style={{ display: "flex", gap: 32, marginTop: 32 }}>
-                  <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>15+</div><div style={{ fontSize: 12, color: SUBTLE }}>YEARS EXPERIENCE</div></div>
-                  <div><div className="heading-font" style={{ fontSize: 36, fontWeight: 900, color: ORANGE }}>250+</div><div style={{ fontSize: 12, color: SUBTLE }}>PROJECTS DONE</div></div>
-                </div>
-                <button className="btn-orange" style={{ marginTop: 28 }} onClick={() => setPage("about")}>VIEW FULL PROFILE</button>
+                <button className="btn-read-story" onClick={() => setPage("about")}>READ OUR FULL STORY</button>
               </Reveal>
             </div>
           </div>
@@ -238,13 +270,13 @@ export const HomePage = ({ setPage }) => {
       <section className="section" style={{ background: BLACK }}>
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 36 }}>
-            <Reveal x={-20}>
+            <Reveal x={-20} width="auto">
               <div>
                 <div className="section-tag">OUR PORTFOLIO</div>
                 <h2 className="heading-font" style={{ fontSize: 48, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>RECENT <span style={{ color: ORANGE }}>PROJECTS</span></h2>
               </div>
             </Reveal>
-            <Reveal x={20}>
+            <Reveal x={20} width="auto">
               <button className="btn-outline" onClick={() => setPage("projects")} style={{ flexShrink: 0 }}>VIEW ALL PROJECTS</button>
             </Reveal>
           </div>
