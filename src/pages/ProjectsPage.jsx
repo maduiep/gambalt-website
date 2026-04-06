@@ -3,18 +3,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
+import heroImg from "../assets/images/Projects Hero Image.png";
+import imgLagosIbadan from "../assets/images/lagos-ibadan-expressway.png";
+import imgTechHub from "../assets/images/victoria-island-techhub.png";
+import imgFloodControl from "../assets/images/lekki-flood-control.png";
+import imgMedicalCenter from "../assets/images/federal-medical-center.png";
+import imgLuxuryEstate from "../assets/images/opal-luxury-estate.png";
+import imgInterchange from "../assets/images/ogun-state-interchange.png";
 
 export const ProjectsPage = ({ setPage }) => {
   const [filter, setFilter] = useState("All Projects");
   const filters = ["All Projects", "Infrastructure / Roads", "Commercial", "Residential", "Drainage Systems", "Institutional"];
 
   const projects = [
-    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Lagos-Ibadan Expressway Section II", desc: "Major highway reconstruction spanning 45km, including heavy-duty asphalt paving and structural works.", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", tag: "Infrastructure / Roads", id: "project-lagos" },
-    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", desc: "A 12-story commercial complex featuring smart building management systems and green energy.", img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", tag: "Commercial", id: "project-detail" },
-    { cat: "DRAINAGE SYSTEMS", status: "COMPLETED 2022", title: "Lekki Peninsula Flood Control", desc: "Extensive underground drainage network covering 15 sq km to mitigate seasonal flooding.", img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80", tag: "Drainage Systems", id: "project-detail" },
-    { cat: "INSTITUTIONAL", status: "COMPLETED 2021", title: "Federal Medical Center Extension", desc: "Construction of a new 200-bed ward facility adhering strictly to WHO healthcare infrastructure standards.", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80", tag: "Institutional", id: "project-detail" },
-    { cat: "RESIDENTIAL", status: "ONGOING", title: "Opal Luxury Estate", desc: "Development of 50 premium detached duplexes with complete internal road networks.", img: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=600&q=80", tag: "Residential", id: "project-detail" },
-    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Interchange", desc: "Design and construction of a multi-level interchange to ease traffic congestion at major junction.", img: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80", tag: "Infrastructure / Roads", id: "project-detail" },
+    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Lagos-Ibadan Expressway Section II", desc: "Major highway reconstruction spanning 45km, including heavy-duty asphalt paving and structural works.", img: imgLagosIbadan, tag: "Infrastructure / Roads", id: "project-lagos" },
+    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", desc: "A 12-story commercial complex featuring smart building management systems and green energy.", img: imgTechHub, tag: "Commercial", id: "project-detail" },
+    { cat: "DRAINAGE SYSTEMS", status: "COMPLETED 2022", title: "Lekki Peninsula Flood Control", desc: "Extensive underground drainage network covering 15 sq km to mitigate seasonal flooding.", img: imgFloodControl, tag: "Drainage Systems", id: "project-detail" },
+    { cat: "INSTITUTIONAL", status: "COMPLETED 2021", title: "Federal Medical Center Extension", desc: "Construction of a new 200-bed ward facility adhering strictly to WHO healthcare infrastructure standards.", img: imgMedicalCenter, tag: "Institutional", id: "project-detail" },
+    { cat: "RESIDENTIAL", status: "ONGOING", title: "Opal Luxury Estate", desc: "Development of 50 premium detached duplexes with complete internal road networks.", img: imgLuxuryEstate, tag: "Residential", id: "project-detail" },
+    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Interchange", desc: "Design and construction of a multi-level interchange to ease traffic congestion at major junction.", img: imgInterchange, tag: "Infrastructure / Roads", id: "project-detail" },
   ];
 
   const visible = filter === "All Projects" ? projects : projects.filter(p => p.tag === filter);
@@ -35,7 +42,7 @@ export const ProjectsPage = ({ setPage }) => {
   return (
     <div>
       <PageHero tag="OUR PORTFOLIO" title="DELIVERING" accent="EXCELLENCE ACROSS NIGERIA"
-        img="https://images.unsplash.com/photo-1460574283810-2aab119d8511?w=1600&q=80"
+        img={heroImg}
         subtitle="Explore our comprehensive track record of successful infrastructure, commercial, and residential projects." />
 
       <section className="section" style={{ background: BLACK }}>

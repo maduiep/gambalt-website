@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
+import heroImg from "../assets/images/Services Hero Image.png";
 
 export const ServicesPage = ({ setPage }) => {
   const [expanded, setExpanded] = useState(0);
@@ -28,7 +29,7 @@ export const ServicesPage = ({ setPage }) => {
 
   return (
     <div>
-      <PageHero tag="OUR EXPERTISE" title="INDUSTRIAL STRENGTH" accent="SERVICES" img="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1600&q=80"
+      <PageHero tag="OUR EXPERTISE" title="INDUSTRIAL STRENGTH" accent="SERVICES" img={heroImg}
         subtitle="Comprehensive civil engineering and construction solutions designed for maximum durability, efficiency, and compliance. We deliver outcomes, not just outputs." />
 
       {/* Industries bar */}

@@ -37,6 +37,21 @@ export const Navbar = ({ page, setPage, theme, setTheme }) => {
   const links = ["Welcome", "About Us", "Services", "Projects", "How It Works", "Testimonials", "Contact"];
   const pageMap = { "Welcome": "home", "About Us": "about", "Services": "services", "Projects": "projects", "How It Works": "how-it-works", "Testimonials": "testimonials", "Contact": "contact" };
 
+  const dropdowns = {
+    "Services": [
+      { label: "Road Construction & Paving", pageKey: "service-detail" },
+      { label: "Commercial Structures", pageKey: "service-detail" },
+      { label: "Bridge Engineering", pageKey: "service-detail" },
+      { label: "Earthworks & Excavation", pageKey: "service-detail" }
+    ],
+    "Projects": [
+      { label: "Lagos-Ibadan Expressway Expansion", pageKey: "project-lagos" },
+      { label: "Victoria Island Tech Hub", pageKey: "project-detail" },
+      { label: "Ogun State Bridge Works", pageKey: "project-detail" },
+      { label: "Ogun State Manufacturing Plant", pageKey: "project-detail" }
+    ]
+  };
+
   const navStyle = {
     position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
     background: scrolled ? "var(--nav-bg-scrolled, rgba(10,10,10,0.97))" : "var(--nav-bg, rgba(10,10,10,0.85))",
@@ -69,16 +84,32 @@ export const Navbar = ({ page, setPage, theme, setTheme }) => {
           {/* Desktop Navigation */}
           <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             {links.map((l, i) => (
-              <motion.span 
-                key={l} 
-                className={`nav-link ${page === pageMap[l] ? "active" : ""}`}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
-                onClick={() => setPage(pageMap[l])}
-              >
-                {l}
-              </motion.span>
+              <div key={l} className="nav-item-container">
+                <motion.span 
+                  className={`nav-link ${page === pageMap[l] ? "active" : ""}`}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
+                  onClick={() => setPage(pageMap[l])}
+                  style={{ display: "flex", alignItems: "center", gap: 4 }}
+                >
+                  {l} {dropdowns[l] && <span style={{ fontSize: 9, opacity: 0.7 }}>▼</span>}
+                </motion.span>
+                
+                {dropdowns[l] && (
+                  <div className="nav-dropdown">
+                    {dropdowns[l].map((item, idx) => (
+                      <div 
+                        key={idx} 
+                        className="nav-dropdown-item"
+                        onClick={() => setPage(item.pageKey)}
+                      >
+                        {item.label}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <motion.button 
               className="btn-orange" 

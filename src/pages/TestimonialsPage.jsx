@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
+import heroImg from "../assets/images/Testimonials Hero Image.png";
 
 export const TestimonialsPage = ({ setPage }) => {
   const [filter, setFilter] = useState("All Clients");
@@ -47,7 +48,7 @@ export const TestimonialsPage = ({ setPage }) => {
 
   return (
     <div>
-      <PageHero tag="CLIENT SUCCESS" title="BUILT ON" accent="TRUST" img="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80"
+      <PageHero tag="CLIENT SUCCESS" title="BUILT ON" accent="TRUST" img={heroImg}
         subtitle="Hear from the government agencies, commercial developers, and private owners who rely on Gambalt for precision engineering and rigorous project delivery." />
 
       <section className="section" style={{ background: BLACK }}>

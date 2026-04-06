@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { Reveal } from "../components/Reveal";
+import serviceDetailHero from "../assets/images/service-detail-hero.png";
 
 export const ServiceDetailPage = ({ setPage }) => {
   const containerVariants = {
@@ -19,20 +20,20 @@ export const ServiceDetailPage = ({ setPage }) => {
 
   return (
     <div>
-      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover`, minHeight: 400, display: "flex", alignItems: "flex-end", paddingBottom: 48, paddingTop: 120 }} className="blur-in">
+      <div style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url(${serviceDetailHero}) center/cover`, minHeight: 400, display: "flex", alignItems: "flex-end", paddingBottom: 48, paddingTop: 120 }} className="blur-in">
         <div className="container">
           <Reveal x={-20}>
             <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
               <span style={{ color: ORANGE, cursor: "pointer", fontSize: 13, fontWeight: 600 }} onClick={() => setPage("services")}>← Back to Services</span>
               <span style={{ color: MUTED }}>|</span>
-              <span className="tag-orange">INFRASTRUCTURE</span>
+              <span className="tag-orange">FULL SERVICE</span>
             </div>
             <h1 className="heading-font" style={{ fontSize: 64, fontWeight: 900, textTransform: "uppercase", lineHeight: 1, color: "#fff" }}>
-              ROAD CONSTRUCTION<br /><span style={{ color: ORANGE }}>& PAVING</span>
+              CIVIL ENGINEERING<br /><span style={{ color: ORANGE }}>&amp; INFRASTRUCTURE</span>
             </h1>
           </Reveal>
           <Reveal delay={0.2} y={20}>
-            <p style={{ marginTop: 16, fontSize: 15, color: "#ccc", maxWidth: 500 }}>Delivering high-durability road networks designed to withstand heavy industrial traffic and extreme weather conditions. We focus on long-term structural integrity and seamless project execution.</p>
+            <p style={{ marginTop: 16, fontSize: 15, color: "#ccc", maxWidth: 500 }}>From heavy-duty earthmoving and road construction to complex structural builds, Gambalt delivers end-to-end civil engineering solutions backed by precision planning, safety-first protocols, and a powerful fleet of heavy machinery.</p>
             <div style={{ display: "flex", gap: 16, marginTop: 28, flexWrap: "wrap" }}>
               <button className="btn-orange" onClick={() => setPage("quote")}>REQUEST A CONSULTATION</button>
               <button className="btn-outline">VIEW DELIVERABLES</button>

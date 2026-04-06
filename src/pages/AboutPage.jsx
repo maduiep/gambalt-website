@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
+import heroImg from "../assets/images/About Us Hero Image.png";
 
 export const AboutPage = ({ setPage }) => {
   const values = [
@@ -39,7 +40,7 @@ export const AboutPage = ({ setPage }) => {
         title="WE" 
         accent="BUILD." 
         subtitle="We are a premier civil engineering and infrastructure firm dedicated to constructing robust, future-ready developments with uncompromising precision."
-        img="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80" 
+        img={heroImg} 
       />
 
       {/* Company overview */}

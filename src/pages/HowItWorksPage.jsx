@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ORANGE, BLACK, DARK, CARD, BORDER, TEXT, MUTED, SUBTLE } from "../theme";
 import { PageHero } from "../components/PageHero";
 import { Reveal } from "../components/Reveal";
+import heroImg from "../assets/images/How It Works Hero Image.png";
 
 export const HowItWorksPage = ({ setPage }) => {
   const [open, setOpen] = useState(0);
@@ -34,7 +35,7 @@ export const HowItWorksPage = ({ setPage }) => {
 
   return (
     <div>
-      <PageHero tag="OUR PROCESS" title="HOW WE DELIVER" accent="EXCELLENCE" img="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1600&q=80"
+      <PageHero tag="OUR PROCESS" title="HOW WE DELIVER" accent="EXCELLENCE" img={heroImg}
         subtitle="A structured, hands-on approach to transforming complex engineering challenges into successfully delivered infrastructure projects." />
 
       <section className="section" style={{ background: BLACK }}>

@@ -5,6 +5,10 @@ import { Reveal } from "../components/Reveal";
 import aboutWorkersImg from "../assets/images/about-workers.jpg";
 import partnerWorkersImg from "../assets/images/partner-workers.jpg";
 import gambaltHeroImg from "../assets/images/gambalt-hero.jpg";
+import imgLagosIbadan from "../assets/images/lagos-ibadan-expressway.png";
+import imgTechHub from "../assets/images/victoria-island-techhub.png";
+import imgBridgeWorks from "../assets/images/ogun-bridge-works.png";
+import imgManufacturing from "../assets/images/ogun-manufacturing-plant.png";
 
 export const HomePage = ({ setPage }) => {
   const stats = [{ n: "15+", l: "Years Experience" }, { n: "250+", l: "Projects Completed" }, { n: "50+", l: "Active Projects" }, { n: "100%", l: "Safety Record" }];
@@ -19,10 +23,10 @@ export const HomePage = ({ setPage }) => {
   ];
 
   const projects = [
-    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Lagos-Ibadan Expressway Expansion", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", id: "project-lagos" },
-    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", id: "project-detail" },
-    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Bridge Works", img: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80", id: "project-detail" },
-    { cat: "COMMERCIAL", status: "ONGOING", title: "Ogun State Manufacturing Plant", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", id: "project-detail" },
+    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Lagos-Ibadan Expressway Expansion", img: imgLagosIbadan, id: "project-lagos" },
+    { cat: "COMMERCIAL", status: "ONGOING", title: "Victoria Island Tech Hub", img: imgTechHub, id: "project-detail" },
+    { cat: "INFRASTRUCTURE", status: "COMPLETED 2023", title: "Ogun State Bridge Works", img: imgBridgeWorks, id: "project-detail" },
+    { cat: "COMMERCIAL", status: "ONGOING", title: "Ogun State Manufacturing Plant", img: imgManufacturing, id: "project-detail" },
   ];
 
   const testimonials = [
@@ -93,7 +97,7 @@ export const HomePage = ({ setPage }) => {
             </Reveal>
             <Reveal delay={0.4} y={20}>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 36, maxWidth: 500 }}>
-                It is a long established fact that a reader will be distracted the readable content of a page when looking at layout the point of using
+                Gambalt is a premier civil engineering and infrastructure consultancy delivering industrial-strength solutions and future-ready developments with uncompromising precision.
               </p>
             </Reveal>
             <Reveal delay={0.6} y={10}>
