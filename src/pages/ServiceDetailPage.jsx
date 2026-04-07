@@ -79,7 +79,8 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
 
             <div style={{ display: "flex", gap: 20, marginTop: 44, flexWrap: "wrap" }}>
               <button className="btn-orange" style={{ padding: "18px 40px" }} onClick={() => setPage("quote")}>REQUEST A CONSULTATION</button>
-              <button className="btn-outline" style={{ padding: "18px 40px" }} onClick={() => deliverablesRef.current?.scrollIntoView({ behavior: 'smooth' })}>VIEW DELIVERABLES</button>
+              <button className="btn-white" style={{ padding: "18px 40px" }} onClick={() => deliverablesRef.current?.scrollIntoView({ behavior: 'smooth' })}>VIEW DELIVERABLES</button>
+
             </div>
           </Reveal>
         </div>
@@ -99,8 +100,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
           </Reveal>
           
           <motion.div 
-            style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }} 
-            className="grid-2-tp-1"
+            className="grid-2"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -109,7 +109,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
             {currentService.metrics.map(([l, v]) => (
               <motion.div key={l} style={{ background: DARK, padding: 32, border: `1px solid ${BORDER}`, borderRadius: 2 }} variants={itemVariants}>
                 <p style={{ fontSize: 12, color: MUTED, marginBottom: 16, textTransform: "uppercase", letterSpacing: 1.5, fontWeight: 700 }}>{l}</p>
-                <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+                <div className="mobile-stack-left" style={{ gap: 20 }}>
                    <div style={{ flex: 1, height: 6, background: BORDER, borderRadius: 3, overflow: "hidden" }}>
                     <motion.div 
                       variants={barVariants}
@@ -165,8 +165,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
           </Reveal>
           
           <motion.div 
-            style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32 }} 
-            className="grid-2-tp-1"
+            className="grid-2"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -190,7 +189,7 @@ export const ServiceDetailPage = ({ setPage, serviceKey }) => {
       {/* CTA Section */}
       <Reveal y={40}>
         <div className="cta-section" style={{ background: `linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url(${currentService.heroImg}) center/cover fixed`, minHeight: 450, display: "flex", alignItems: "center" }}>
-          <div className="container" style={{ textAlign: "center", position: "relative", zIndex: 1, padding: "80px 0" }}>
+          <div className="container text-center-tp-left" style={{ position: "relative", zIndex: 1, padding: "80px 0" }}>
             <h2 className="heading-font" style={{ fontSize: 56, fontWeight: 900, textTransform: "uppercase", marginBottom: 20, color: "#fff" }}>{currentService.cta}</h2>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 18, marginBottom: 48, maxWidth: 700, margin: "0 auto", lineHeight: 1.6 }}>Partner with Gambalt for industrial-grade civil engineering results. Our fleet is ready, our engineers represent precision.</p>
 

@@ -65,7 +65,8 @@ export const ServicesPage = ({ setPage }) => {
             {services.map((s, i) => (
               <motion.div key={i} variants={itemVariants} style={{ borderBottom: `1px solid ${BORDER}`, overflow: "hidden" }}>
                 <motion.div 
-                  style={{ padding: "24px 32px", display: "flex", alignItems: "center", gap: 20, cursor: "pointer", background: expanded === i ? CARD : "transparent" }}
+                  className="mobile-stack-left"
+                  style={{ padding: "24px 32px", cursor: "pointer", background: expanded === i ? CARD : "transparent", gap: 20 }}
                   whileHover={{ background: "rgba(255,102,0,0.03)" }}
                   onClick={() => setExpanded(expanded === i ? -1 : i)}
                 >
@@ -96,8 +97,8 @@ export const ServicesPage = ({ setPage }) => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       style={{ overflow: "hidden", background: CARD }}
                     >
-                      <div style={{ padding: "0 32px 28px 100px" }}>
-                        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 10 }}>
+                      <div className="services-details-grid">
+                        <div className="grid-2">
                           {s.details.map(d => (
                             <div key={d} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                               <span style={{ color: ORANGE }}>✓</span>
@@ -120,7 +121,7 @@ export const ServicesPage = ({ setPage }) => {
       <section style={{ background: DARK, padding: "80px 0" }}>
         <div className="container">
           <Reveal y={20}>
-            <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div className="text-center-tp-left" style={{ marginBottom: 48 }}>
               <div style={{ fontSize: 32, marginBottom: 16 }}>🦺</div>
               <h2 className="heading-font" style={{ fontSize: 44, fontWeight: 900, textTransform: "uppercase", color: TEXT }}>START YOUR NEXT PROJECT WITH GAMBALT</h2>
               <p style={{ color: SUBTLE, marginTop: 12 }}>Whether you need comprehensive infrastructure build or specialized civil engineering services, our team is ready.</p>
